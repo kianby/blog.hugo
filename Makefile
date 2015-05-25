@@ -47,7 +47,7 @@ $(OUTPUTDIR)/index.html:
 
 clean:
 	mkdir -p ${OUTPUTDIR}
-	find $(OUTPUTDIR) -mindepth 1 -exec rm {} \;
+	rm -rf ${OUTPUTDIR}/*
 
 regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
