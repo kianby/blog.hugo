@@ -37,10 +37,6 @@ PIWIK_SITE_ID = 1
 PLUGIN_PATHS = ['plugins', ]
 PLUGINS = ['sitemap', 'planet']
 
-# Configure CaCause plugin
-CACAUSE_DIR = "comments"
-CACAUSE_GRAVATAR = True
-
 SITEMAP = {
     'format': 'xml',
     'priorities': {

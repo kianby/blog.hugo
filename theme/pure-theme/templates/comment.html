@@ -1,9 +1,9 @@
 <div id="submit-button">
-    <a class="button-success pure-button" href="javascript:showHide('comment-form', 'submit-button');">Commenter</a>
+    <a class="button-success pure-button" href="javascript:show_hide('comment-form','submit-button');">Commenter</a>
 </div>
 
 <div id="comment-form" style="display:none">
-    <form class="pure-form" role="form" action="" onsubmit="this.action=get_action();" method="post">
+    <form class="pure-form" role="form" action="" autocomplete="off" method="post">
         <fieldset class="pure-group">
             <input class="pure-u-1-2" id="author" name="author" type="text" placeholder="Nom ou Surnom *" required>
             <input class="pure-u-1-2" id="email" name="email" type="email" placeholder="Adresse email (non publié)">
@@ -28,73 +28,54 @@
             </div>
         </fieldset>
         <button onclick="preview_markdown(); return false" class="button-warning pure-button">Prévisualiser</button>
-        <button type="submit" class="button-success pure-button">Envoyer</button>
+        <button type="button" onclick="new_comment(); return false;" class="button-success pure-button">Envoyer</button>
     </form>
 </div>
 
-{% if article.cacause_comment %}
+<!-- ====================================================== -->
+<!--  Begin section : display comments                      -->
+<!-- ====================================================== -->
 
-    <p></p>
-    <div id="show-button">
-        {% if article.cacause_comment|length > 1 %}
-        <a class="button-success pure-button" href="javascript:showHide('comments-list', 'show-button');">Voir les {{ article.cacause_comment|length }} commentaires</a>
-        {% else %}
-        <a class="button-success pure-button" href="javascript:showHide('comments-list', 'show-button');">Voir le commentaire</a>
-        {% endif %}
-    </div>
+<p></p>
+<div id="show-comments-button" style="display:none">
+  <a id="show-comment-label" class="button-success pure-button" 
+     href="javascript:show_comments();">Voir le commentaire</a>
+</div>
 
-    <div id="comments-list" style="display:none">
-    {% for comment in article.cacause_comment %}
-        <hr>
-        <div class="inline">
-            {% if comment.site %}
-            <a href="{{ comment.site }}">
-            {% endif %}
-            {% if CACAUSE_GRAVATAR and comment.gravatar %}
-            <img src="{{ comment.gravatar }}" height="32" width="32" style="float:left; margin-right:10px"/>
-            {% endif %}
-            {% if comment.site %}
-            </a>
-            {% endif %}
-            <span class="title">{{ comment.author }}</span>
-            {% if comment.date %}
-            <span> - {{ comment.date }}</span>
-            {% endif %}
-        </div>
-        {{ comment.body }}
-    {% endfor %}
-    </div>
-{% endif %}
+<!-- stacosys comments container -->
+<div id="stacosys-comments" style="display:none">Chargement...</div>
+
+<!-- stacosys comments template -->
+{% raw %}
+<script id="stacosys-template" type="x-tmpl-mustache">
+{{#data}}
+<hr>
+<div class="inline">
+{{#site}}
+    <a href="{{site}}">
+{{/site}}
+    <img src="http://www.gravatar.com/avatar/{{avatar}}.jpg" style="float:left; margin-right:10px" height="32" width="32">
+{{#site}}
+    </a>
+{{/site}}
+    <span class="title">{{author}}</span>
+    <span> - {{date}}</span>
+</div>
+{{{ mdcontent}}}
+{{/data}}
+</script>
+{% endraw %}
+
+<!-- ====================================================== -->
+<!--  End section : display comments                        -->
+<!-- ====================================================== -->
 
 <script type="text/javascript"><!--
 
-function showHide(panel_id, button_id){
-    if (document.getElementById(panel_id).style.display == 'none'){
-        document.getElementById(panel_id).style.display = '';
-        document.getElementById(button_id).style.display = 'none';
-    } else {
-        document.getElementById(panel_id).style.display = 'none';
-    }
-}
+var STACOSYS_URL = 'http://stacosys.madyanne.fr';
+var STACOSYS_TOKEN = '9fb3fc042c572cb831005fd16186126765140fa2bd9bb2d4a28e47a9457dc26c';
+var STACOSYS_PAGE = window.location.pathname;
 
-function get_action() {
-  return '/post_a_new_comment';
-}
-
-function preview_markdown() {
-    if (document.getElementById('preview-container').style.display == 'none'){
-        document.getElementById('preview-container').style.display = '';
-    }
-    var $ = function (id) { return document.getElementById(id); };
-    new Editor($("message"), $("preview"));
-}
-
-function Editor(input, preview) {
-    this.update = function () {
-        preview.innerHTML = markdown.toHTML(input.value);
-    };
-    input.editor = this;
-    this.update();
-}
+window.onload = initialize_comments();
 
 --></script>
