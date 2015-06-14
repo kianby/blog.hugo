@@ -12,6 +12,7 @@
 body, .pure-g [class *= "pure-u"], .pure-g-r [class *= "pure-u"] {
     font-family: "open_sansregular";
     //font-size: 14px;
+    background-color: #FBFBFB;
 }
 
 h1, h2, h3 {
