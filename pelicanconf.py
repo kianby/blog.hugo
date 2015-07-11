@@ -33,9 +33,12 @@ SOCIAL = ()
 PIWIK_URL = 'piwik.madyanne.fr'
 PIWIK_SITE_ID = 1
 
+# Markdown extensions
+MD_EXTENSIONS = ['extra']
+
 # plugins
 PLUGIN_PATHS = ['plugins', ]
-PLUGINS = ['sitemap', 'planet']
+PLUGINS = ['sitemap', 'tag_cloud', 'planet']
 
 SITEMAP = {
     'format': 'xml',
@@ -115,3 +118,4 @@ DELETE_OUTPUT_DIRECTORY = False
 DEFAULT_PAGINATION = 10
 
 THEME = 'theme/pure-theme'
+

@@ -15,7 +15,8 @@
     <!--[if gt IE 8]><!-->
         <link rel="stylesheet" href="{{ SITEURL }}/theme/css/pure/grids-responsive-min.css">
     <!--<![endif]-->
-    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/style.min.css" type="text/css" />
+    <link rel="stylesheet" href="{{ SITEURL }}/theme/css/default.min.css" type="text/css" />
     <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font-awesome.min.css" type="text/css" />
 
     <!-- Le fav and touch icons -->
@@ -40,8 +41,10 @@
     <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} RSS Feed" />
     {% endif %}
 
-    <script src="{{ SITEURL }}/theme/js/markdown.js"></script>
-    <script src="{{ SITEURL }}/theme/js/mustache.js"></script>
+    <script src="{{ SITEURL }}/theme/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="{{ SITEURL }}/theme/js/markdown.min.js"></script>
+    <script src="{{ SITEURL }}/theme/js/mustache.min.js"></script>
     <script src="{{ SITEURL }}/theme/js/stacosys.js"></script>
     <script src="{{ SITEURL }}/theme/js/page.js"></script>
 
