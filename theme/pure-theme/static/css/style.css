@@ -45,6 +45,7 @@ pre {
     word-break: break-all;
     word-wrap: break-word;
 }
+
 #banner {
     background-color: #EEEEEE;
     min-height: 20px;
@@ -105,6 +106,10 @@ pre {
     list-style: none outside none;
     margin-left: 0;
     padding-left: 15px;
+}
+
+.smalltext {
+  font-size: small;
 }
 
 .label {
