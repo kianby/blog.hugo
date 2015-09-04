@@ -65,7 +65,7 @@ function new_comment() {
   var email = document.getElementById('email').value;
   var site = document.getElementById('site').value;
   var captcha = document.getElementById('captcha').value;
-  var subscribe = document.getElementById('subscribe').value;
+  var subscribe = document.getElementById('subscribe').checked;
   var message = document.getElementById('message').value;
   
   stacosys_new_comment(author, email, site, captcha, subscribe, message, submit_success, submit_failure);
