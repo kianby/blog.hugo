@@ -1,7 +1,7 @@
 Title: Retour d'expérience Ubuntu Touch
 Date: 2015-12-12 20:40
 Tags: GNU/Linux, Mobilité 
-Planet: false
+Planet: true
 
 L'article peut sembler opportuniste par rapport aux rumeurs d'abandon de
 Firefox OS mais il n'en est rien (je le jure votre honneur). C'est seulement
