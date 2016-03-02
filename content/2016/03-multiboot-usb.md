@@ -30,27 +30,32 @@ CentOS pèse 4 Go donc on formate en EXT.
 
 Voici ma table de partition :
 
-    $ fdisk -l /dev/sdf
+~~~~{.nohighlight}
+  $ fdisk -l /dev/sdf
 
-    Disque /dev/sdf : 14,5 GiB, 15504900096 octets, 30283008 secteurs
-    Unités : secteur de 1 × 512 = 512 octets
-    Taille de secteur (logique / physique) : 512 octets / 512 octets
-    taille d'E/S (minimale / optimale) : 512 octets / 512 octets
-    Type d'étiquette de disque : gpt
-    Identifiant de disque : 34793BF6-88B6-4325-98D8-BD79DC297619
+  Disque /dev/sdf : 14,5 GiB, 15504900096 octets, 30283008 secteurs
+  Unités : secteur de 1 × 512 = 512 octets
+  Taille de secteur (logique / physique) : 512 octets / 512 octets
+  taille d'E/S (minimale / optimale) : 512 octets / 512 octets
+  Type d'étiquette de disque : gpt
+  Identifiant de disque : 34793BF6-88B6-4325-98D8-BD79DC297619
 
-    Device     Start      End  Sectors  Size Type
-    /dev/sdf1   2048 30282974 30280927 14,4G Linux filesystem
-
+  Device     Start      End  Sectors  Size Type
+  /dev/sdf1   2048 30282974 30280927 14,4G Linux filesystem
+~~~~
 
 Ensuite, on crée un répertoire pour accueillir GRUB et les ISO : 
 
-    $ mount /dev/sdf1 /mnt
-    $ mkdir -p /mnt/boot/iso
+~~~~{.lang-bash}
+  $ mount /dev/sdf1 /mnt
+  $ mkdir -p /mnt/boot/iso
+~~~~
 
 Et on installe GRUB : 
 
-    grub-install --force  --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdf
+~~~~{.lang-bash}
+  grub-install --force  --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdf
+~~~~
 
 Il reste à copier les ISO dans le répertoire */mnt/boot/iso* et à créer un
 fichier *mnt/boot/grub/grub.cfg*. Tout le problème est de configurer correctement
@@ -60,57 +65,61 @@ configuration GRUB pour un certain nombre de distributions.
 
 Voici ma configuration **/mnt/boot/grub/grub.cfg** pour les distributions installées sur ma clef :
 
-    # path to the partition holding ISO images (using UUID)
-    set imgdevpath="/dev/disk/by-uuid/53ac1278-3d48-4528-a348-2eb3b7b8dc93"
+~~~~{.lang-ini}
+  # path to the partition holding ISO images (using UUID)
+  set imgdevpath="/dev/disk/by-uuid/53ac1278-3d48-4528-a348-2eb3b7b8dc93"
 
-    # define globally (i.e outside any menuentry)
-    insmod search_fs_uuid
-    search --no-floppy --set=isopart --fs-uuid 40c8461c-a5fd-4b3b-9a78-f8e92275ea98
-    # later use inside each menuentry instead
-    loopback loop ($isopart)$isofile
+  # define globally (i.e outside any menuentry)
+  insmod search_fs_uuid
+  search --no-floppy --set=isopart --fs-uuid 40c8461c-a5fd-4b3b-9a78-f8e92275ea98
+  # later use inside each menuentry instead
+  loopback loop ($isopart)$isofile
 
-    menuentry "Live clonezilla-live-2.4.2-61-amd64" {
-        set isofile="/boot/iso/clonezilla-live-2.4.2-61-amd64.iso"
-        loopback loop $isofile
-        linux (loop)/live/vmlinuz findiso=$isofile boot=live union=overlay username=user config
-        initrd (loop)/live/initrd.img
-    }
+  menuentry "Live clonezilla-live-2.4.2-61-amd64" {
+      set isofile="/boot/iso/clonezilla-live-2.4.2-61-amd64.iso"
+      loopback loop $isofile
+      linux (loop)/live/vmlinuz findiso=$isofile boot=live union=overlay username=user config
+      initrd (loop)/live/initrd.img
+  }
 
-    menuentry "Live clonezilla-live-2.2.2-32-i686-pae" {
-        set isofile="/boot/iso/clonezilla-live-2.2.2-32-i686-pae.iso"
-        loopback loop $isofile
-        linux (loop)/live/vmlinuz boot=live live-config noswap nolocales edd=on nomodeset ocs_live_run=\"ocs-live-general\" ocs_live_extra_param=\"\" ocs_live_keymap=\"\" ocs_live_batch=\"no\" ocs_lang=\"\" GRUB_GFXMODE=1024x768 ip=frommedia nosplash toram=filesystem.squashfs findiso=$isofile
-        initrd (loop)/live/initrd.img
-    }
+  menuentry "Live clonezilla-live-2.2.2-32-i686-pae" {
+      set isofile="/boot/iso/clonezilla-live-2.2.2-32-i686-pae.iso"
+      loopback loop $isofile
+      linux (loop)/live/vmlinuz boot=live live-config noswap nolocales edd=on nomodeset ocs_live_run=\"ocs-live-general\" ocs_live_extra_param=\"\" ocs_live_keymap=\"\" ocs_live_batch=\"no\" ocs_lang=\"\" GRUB_GFXMODE=1024x768 ip=frommedia nosplash toram=filesystem.squashfs findiso=$isofile
+      initrd (loop)/live/initrd.img
+  }
 
-    menuentry "Live Knoppix_v7.6.1DVD-2016-01-16-EN" {
-            set isofile="/boot/iso/KNOPPIX_V7.6.1DVD-2016-01-16-EN.iso"
-            loopback loop $isofile
-            linux (loop)/boot/isolinux/linux bootfrom=/mnt-iso/$isofile acpi=off keyboard=fr lang=fr
-            initrd (loop)/boot/isolinux/minirt.gz
-    }
+  menuentry "Live Knoppix_v7.6.1DVD-2016-01-16-EN" {
+          set isofile="/boot/iso/KNOPPIX_V7.6.1DVD-2016-01-16-EN.iso"
+          loopback loop $isofile
+          linux (loop)/boot/isolinux/linux bootfrom=/mnt-iso/$isofile acpi=off keyboard=fr lang=fr
+          initrd (loop)/boot/isolinux/minirt.gz
+  }
 
-    menuentry "Install CentOS-7-x86_64-DVD-1511" {
-        set isofile="/boot/iso/CentOS-7-x86_64-DVD-1511.iso"
-        loopback loop $isofile
-        linux (loop)/isolinux/vmlinuz noeject inst.stage2=hd:UUID=53ac1278-3d48-4528-a348-2eb3b7b8dc93:/$isofile
-        initrd (loop)/isolinux/initrd.img
-    }
+  menuentry "Install CentOS-7-x86_64-DVD-1511" {
+      set isofile="/boot/iso/CentOS-7-x86_64-DVD-1511.iso"
+      loopback loop $isofile
+      linux (loop)/isolinux/vmlinuz noeject inst.stage2=hd:UUID=53ac1278-3d48-4528-a348-2eb3b7b8dc93:/$isofile
+      initrd (loop)/isolinux/initrd.img
+  }
 
-    menuentry 'Install Debian-8.3.0-amd64-firmware' {
-        set isofile='/boot/iso/firmware-8.3.0-amd64-netinst.iso'
-        set initrdfile='/boot/iso/debian-8.3.0-am64-initrd.gz'
-        loopback loop $isofile
-        linux (loop)/install.amd/vmlinuz vga=791 iso-scan/ask_second_pass=true iso-scan/filename=$isofile
-        initrd $initrdfile
-    }
+  menuentry 'Install Debian-8.3.0-amd64-firmware' {
+      set isofile='/boot/iso/firmware-8.3.0-amd64-netinst.iso'
+      set initrdfile='/boot/iso/debian-8.3.0-am64-initrd.gz'
+      loopback loop $isofile
+      linux (loop)/install.amd/vmlinuz vga=791 iso-scan/ask_second_pass=true iso-scan/filename=$isofile
+      initrd $initrdfile
+  }
+~~~~
 
 Pour trouver l'identifiant UUID de la clef qu'on claque dans la variable
 *imgdevpath* en début de config et qu'on passe à *inst.stage2* dans la section
 CentOS ou l'identifiant de la partition *fs-uuid* qu'on passe à la commande search,
 on utilise la commande **blkid** :
 
-    # blkid
-    /dev/sdf1: UUID="53ac1278-3d48-4528-a348-2eb3b7b8dc93" TYPE="ext2" PARTUUID="40c8461c-a5fd-4b3b-9a78-f8e92275ea98"
+~~~~{.lang-bash}
+  # blkid
+  /dev/sdf1: UUID="53ac1278-3d48-4528-a348-2eb3b7b8dc93" TYPE="ext2" PARTUUID="40c8461c-a5fd-4b3b-9a78-f8e92275ea98"
+~~~~
 
 
