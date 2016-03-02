@@ -75,3 +75,17 @@ des distributions en éditant le fichier
     # PCI device 0x8086:0x100e (e1000)
     SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="ce:1c:8c:c2:fd:f7", ATTR{type}=="1", KERNEL=="eth*", NAME="eth3"
    
+# Compacter un disque
+
+Il ne s'agit pas de modifier la taille du disque virtualisé mais de réduire son encombrement sur le disque hôte par du compactage. 
+
+Depuis le système GNU/Linux virtualisé, on nullifie (horrible ce mot) l'espace libre :
+
+    dd if=/dev/zero of=/bigemptyfile bs=4096k
+    rm -rf /bigemptyfile
+
+On stoppe la VM et on utilise *vboxmanage* pour compacter le disque :
+
+    vboxmanage modifyhd disk.vdi --compact
+
+Et pour Ms Windows ? je ne sais pas et ça ne m'intéresse pas (*troll inside*)

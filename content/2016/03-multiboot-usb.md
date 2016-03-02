@@ -61,11 +61,9 @@ configuration GRUB pour un certain nombre de distributions.
 Voici ma configuration **/mnt/boot/grub/grub.cfg** pour les distributions installées sur ma clef :
 
     # path to the partition holding ISO images (using UUID)
-    # use blkid to find UUID 
     set imgdevpath="/dev/disk/by-uuid/53ac1278-3d48-4528-a348-2eb3b7b8dc93"
 
     # define globally (i.e outside any menuentry)
-    # use blkid to find PARTUUID 
     insmod search_fs_uuid
     search --no-floppy --set=isopart --fs-uuid 40c8461c-a5fd-4b3b-9a78-f8e92275ea98
     # later use inside each menuentry instead
@@ -78,18 +76,33 @@ Voici ma configuration **/mnt/boot/grub/grub.cfg** pour les distributions instal
         initrd (loop)/live/initrd.img
     }
 
-    menuentry "Live KNOPPIX_V7.6.1DVD-2016-01-16-EN" {
+    menuentry "Live clonezilla-live-2.2.2-32-i686-pae" {
+        set isofile="/boot/iso/clonezilla-live-2.2.2-32-i686-pae.iso"
+        loopback loop $isofile
+        linux (loop)/live/vmlinuz boot=live live-config noswap nolocales edd=on nomodeset ocs_live_run=\"ocs-live-general\" ocs_live_extra_param=\"\" ocs_live_keymap=\"\" ocs_live_batch=\"no\" ocs_lang=\"\" GRUB_GFXMODE=1024x768 ip=frommedia nosplash toram=filesystem.squashfs findiso=$isofile
+        initrd (loop)/live/initrd.img
+    }
+
+    menuentry "Live Knoppix_v7.6.1DVD-2016-01-16-EN" {
             set isofile="/boot/iso/KNOPPIX_V7.6.1DVD-2016-01-16-EN.iso"
             loopback loop $isofile
             linux (loop)/boot/isolinux/linux bootfrom=/mnt-iso/$isofile acpi=off keyboard=fr lang=fr
             initrd (loop)/boot/isolinux/minirt.gz
     }
 
-    menuentry "Install CentOS-7-x86_64-DVD-1503-01" {
-        set isofile="/boot/iso/CentOS-7-x86_64-DVD-1503-01.iso"
+    menuentry "Install CentOS-7-x86_64-DVD-1511" {
+        set isofile="/boot/iso/CentOS-7-x86_64-DVD-1511.iso"
         loopback loop $isofile
         linux (loop)/isolinux/vmlinuz noeject inst.stage2=hd:UUID=53ac1278-3d48-4528-a348-2eb3b7b8dc93:/$isofile
         initrd (loop)/isolinux/initrd.img
+    }
+
+    menuentry 'Install Debian-8.3.0-amd64-firmware' {
+        set isofile='/boot/iso/firmware-8.3.0-amd64-netinst.iso'
+        set initrdfile='/boot/iso/debian-8.3.0-am64-initrd.gz'
+        loopback loop $isofile
+        linux (loop)/install.amd/vmlinuz vga=791 iso-scan/ask_second_pass=true iso-scan/filename=$isofile
+        initrd $initrdfile
     }
 
 Pour trouver l'identifiant UUID de la clef qu'on claque dans la variable
