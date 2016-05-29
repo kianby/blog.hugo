@@ -30,7 +30,7 @@ LINKS = ()
 SOCIAL = ()
 
 # piwik
-PIWIK_URL = 'piwik.madyanne.fr'
+PIWIK_URL = ''
 PIWIK_SITE_ID = 1
 
 # Markdown extensions
