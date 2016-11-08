@@ -19,7 +19,7 @@ ARTICLE_EXCLUDES = (('pages', 'documents', 'extra', 'images'))
 FEED_DOMAIN = SITEURL
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 FEED_ATOM_CUSTOM = 'feeds/%s.atom.xml'
-# FEED_MAX_ITEMS = 10
+FEED_MAX_ITEMS = 10
 
 # tags
 TAG_CLOUD_STEPS = 3
