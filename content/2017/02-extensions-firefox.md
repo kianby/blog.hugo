@@ -1,8 +1,7 @@
 Title: Mes extensions Firefox en 2017
-Date: 2017-01-31 22:00
+Date: 2017-02-02 18:00
 Tags: Web
 Planet: false
-Status: draft
 
 2017 est une année charnière pour la Fondation Mozilla qui doit convaincre que
 Firefox reste son fer de lance dans la lutte pour les standards ouverts du Web.
@@ -11,9 +10,9 @@ avait déjà une base d'utilisateurs, le rêve de pouvoir mettre un orteil dans 
 domaine des objets connectés face à des sociétés qui en ont fait leur cheval de
 croissance pour les prochaines années. Mais la meute des utilisateurs
 mécontents devrait se calmer, reconnaître ce que Mozilla a apporté au Web et
-soutenir plutôt que cracher car ce n'est pas le moment de déserter.  Firefox a
-besoin de sa base d'utilisateurs pour avoir du poids et permettre à Mozilla de
-financer les évolutions majeures annoncées en 2017.
+soutenir Firefox car ce n'est pas le moment de déserter.  Mozilla a besoin de
+sa base d'utilisateurs pour pouvoir financer les évolutions majeures annoncées
+en 2017.
 
 [Trois ans plus
 tard](http://blogduyax.madyanne.fr/mes-extensions-firefox.html), je refais la

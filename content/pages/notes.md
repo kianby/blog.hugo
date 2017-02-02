@@ -12,3 +12,9 @@ Exemple avec le fichier */etc/rkhunter.conf* du paquet **rkhunter** :
 ~~~~{.lang-bash}
   apt-get -o Dpkg::Options::="--force-confmiss" install --reinstall rkhunter
 ~~~~
+
+#### <i class="fa fa-angle-double-right" aria-hidden="true"></i>Supprimer les verrous d'une arborescence SVN
+
+~~~~{.lang-bash}
+  find . -path ./.svn -prune -o -print -exec svn propdel svn:needs-lock {} \;
+~~~~
