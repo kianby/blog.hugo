@@ -1,6 +1,8 @@
 Title: Notes sur MySQL
 Slug: mysql
 
+[<i class="fa fa-home fa-2x" aria-hidden="true"></i>](notes.html)
+
 #### <i class="fa fa-angle-double-right" aria-hidden="true"></i>Désactiver la casse des noms de table
 
 Ajouter le paramètre *lower_case_table_names = 1* dans la section [mysqld] de /etc/my.cnf 
