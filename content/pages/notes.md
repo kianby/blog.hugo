@@ -45,3 +45,20 @@ umount --recursive /mnt
 ~~~~{.lang-bash}
 nmblookup -S -M -- -.
 ~~~~
+
+#### <i class="fa fa-angle-double-right" aria-hidden="true"></i>Configurer Mate avec Dconf
+
+Désactiver le plugin XRDB qui écrase la configuration ~/.Xresources 
+
+~~~~{.lang-bash}
+gsettings list-keys org.mate.SettingsDaemon.plugins.xrdb
+gsettings get org.mate.SettingsDaemon.plugins.xrdb active
+gsettings set org.mate.SettingsDaemon.plugins.xrdb active false
+~~~~
+
+#### <i class="fa fa-angle-double-right" aria-hidden="true"></i>Créer un utilisateur système (pas de mot de passe, pas de login distant)
+
+~~~~{.lang-bash}
+adduser svn --system --disabled-login --no-create-home --group
+~~~~
+
