@@ -3,7 +3,7 @@ Slug: notes
 
 Par catégorie : [MySQL](mysql.html) / [Java](java.html) / [Python](python.html) / OpenBSD
 
-Et le reste en vrac <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+Et le reste un peu en vrac <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
 
 #### <i class="fa fa-angle-double-right" aria-hidden="true"></i>Réinstaller le fichier de configuration d'origine d'un paquet Debian
 
