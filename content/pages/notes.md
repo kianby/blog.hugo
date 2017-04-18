@@ -1,7 +1,7 @@
 Title: Mes notes techniques
 Slug: notes
 
-Par catégorie : [MySQL](mysql.html) / [Java](java.html) / [Python](python.html)
+Par catégorie : [MySQL](mysql.html) / [Java](java.html) / [Python](python.html) / OpenBSD
 
 Et le reste en vrac <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
 
