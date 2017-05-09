@@ -118,4 +118,3 @@ DELETE_OUTPUT_DIRECTORY = False
 DEFAULT_PAGINATION = 10
 
 THEME = 'theme/pure-theme'
-
