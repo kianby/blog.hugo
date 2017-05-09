@@ -53,7 +53,7 @@ regenerate: clean
 	$(PELICAN) -r $(INPUTDIR) -o $(OUTPUTDIR) -s $(CONFFILE) $(PELICANOPTS)
 
 serve:  html
-	cd $(OUTPUTDIR) && python -m SimpleHTTPServer
+	cd $(OUTPUTDIR) && python -m pelican.server
 
 devserver:
 	$(BASEDIR)/develop_server.sh restart

@@ -1,7 +1,7 @@
 Title: Retour d'expérience Ubuntu Touch
 Date: 2015-12-12 20:40
 Tags: GNU/Linux, Mobilité 
-Planet: true
+Planet: false
 
 L'article peut sembler opportuniste par rapport aux rumeurs d'abandon de
 Firefox OS mais il n'en est rien (je le jure votre honneur). C'est seulement
@@ -128,6 +128,7 @@ activer le service SSH  Ensuite on copie la clef publique de notre PC sous
 GNU/Linux dans le téléphone. Ca donne en gros les étape suivantes lues sur
 [AskUbuntu](http://askubuntu.com/questions/348714/how-can-i-access-my-ubuntu-phone-over-ssh)
 
+    :::shell
     adb shell android-gadget-service enable ssh
     adb shell mkdir /home/phablet/.ssh
     adb push ~/.ssh/id_rsa.pub /home/phablet/.ssh/authorized_keys
@@ -143,6 +144,7 @@ système qui est en dehors du répertoire */home/phablet* car par sécurité les
 partitions sont montées en lecture seule. Donc on sera souvent amené à remonter
 la partition en lecture-écriture avec la commande suivante : 
 
+    :::shell
     sudo mount /dev/loop0 / -o remount,rw
 
 On va configurer la synchronisation de nos contacts et du calendrier vers
@@ -151,6 +153,7 @@ s'inspirant de [cette
 discussion](http://askubuntu.com/questions/360466/ubuntu-touch-officially-launched-version-how-to-sync-contacts)
 sur AskUbuntu. D'abord on configure syncevolution :
 
+    :::shell
     # les valeurs username, password et syncurl doivent être adaptées
     syncevolution --keyring=no --configure --template webdav username=yax password=??? syncurl="mycloud.madyanne.fr" target-config@owncloud
     syncevolution --configure --template SyncEvolution_Client sync=none syncURL=local://@owncloud username= password= peerIsClient=1 owncloud
@@ -171,6 +174,7 @@ Ce qui manque juste, c'est une
 synchronisation périodique avec Owncloud par exemple une fois par heure.
 D'abord j'ai naïvement ajouté deux lignes dans la CRONTAB :
 
+    :::shell
     syncevolution owncloud contacts
     syncevolution owncloud calendar
 
@@ -181,7 +185,7 @@ valeurs dans le shell script qu'on va lancer en CRON, merci
 [Alexandre](http://askubuntu.com/questions/611761/syncevolution-in-cronjob-to-sync-the-ubuntu-phone-via-caldav-arddav).
 Donc finalement c'est ce script qu'on va mettre sous CRON :
 
-    #!/bin/sh
+    :::shell
     export DISPLAY=:0.0 
     export DBUS_SESSION_BUS_ADDRESS=$(ps -u phablet e | grep -Eo 'dbus-daemon.*address=unix:abstract=/tmp/dbus-[A-Za-z0-9]{10}' | tail -c35)
     syncevolution owncloud contacts

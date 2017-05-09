@@ -1,7 +1,7 @@
 Title: Configuration de Fail2Ban
 Date: 2015-08-10 17:00
 Tags: Sysadmin, Hébergement
-Planet: true
+Planet: false
 
 Après [l'aspect de la
 sauvegarde](http://blogduyax.madyanne.fr/deploiement-et-sauvegarde.html) je me
@@ -58,7 +58,7 @@ testant la présence du fichier *mail.flag*. Si c'est le cas, on envoie le
 rapport puis on supprime le fichier temporaire et le fichier *mail.flag*. Voici
 le fichier */etc/fail2ban/action.d/sendmail-cron.conf* complet :
 
-
+    :::ini
     # Fail2Ban configuration file
     #
     # Author: Yannic Arnoux
@@ -158,7 +158,7 @@ le fichier */etc/fail2ban/action.d/sendmail-cron.conf* complet :
 
 Dans mon cas, la tâche CRON est journalière :
 
-
+    :::shell
     # fail2ban report
     @daily touch /var/run/fail2ban/mail.flag.
 
@@ -171,7 +171,7 @@ Il reste à configurer fail2ban pour utiliser cette nouvelle action. J'ai
 redéfini dans ma configuration *jail.local* les actions à appliquer sur
 détection d'attaque : d'abord on bloque, ensuite on informe : 
 
-
+    :::ini
     action_mwlc = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protocol)s", chain="%(chain)s"]
                 %(mta)s-cron[name=%(__name__)s, dest="%(destemail)s", logpath=%(logpath)s, chain="%(chain)s", sendername="%(sendername)s"]
     action = %(action_mwlc)s

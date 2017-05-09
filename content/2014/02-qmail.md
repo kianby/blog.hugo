@@ -24,6 +24,7 @@ en place. On peut modifier le hostname de manière persistente en deux étapes :
 L'installation de qmail désinstalle Postfix ou Exim4 car un seul MTA peut
 s'approprier le port 25.
 
+    :::shell
     apt-get install qmail qmail-run
 
 Il s'agit d'un service local, on ne veut surtout pas ouvrir le port 25 sur
@@ -35,8 +36,7 @@ Il faut remplacer *0* par *127.0.0.1* dans le fichier
 
 Voici la version modifiée :
 
-    #!/bin/sh
-
+    :::shell
     QMAILDUID=`id -u qmaild`
     NOFILESGID=`id -g qmaild`
     MAXSMTPD=`cat /var/lib/qmail/control/concurrencyincoming`
@@ -71,12 +71,14 @@ le relais dans le fichier **/etc/qmail/smtproutes** :
 
 Pour tester on relance qmail :
 
-    # qmailctl stop 
-    # qmailctl start
+    :::shell
+    qmailctl stop 
+    qmailctl start
 
 Et on tente l'envoi d'un email avec la commande mail :
 
-    # mail -s "Hello" someone@somewhere.fr
+    :::shell
+    mail -s "Hello" someone@somewhere.fr
     Ceci est un test
     ^D
 

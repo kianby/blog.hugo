@@ -1,7 +1,7 @@
 Title: Quelques astuces pour VirtualBox
 Date: 2015-12-21 19:00
 Tags: Virtualisation
-Planet: true
+Planet: false
 
 VirtualBox est un produit de virtualisation porté par Oracle qui a l'avantage
 d'être multi-plateforme (Ms Windows, OS/X, GNU/Linux) et qui est orienté
@@ -66,6 +66,7 @@ port 80 alors qu'on l'attaque sur le port 8080. Un moyen de contourner ce
 problème si l'application n'est pas configurable, consiste à installer un NginX
 sur la machine hôte pour faire office de proxy.
 
+    :::nginx
     # Proxy
 
     upstream vbox-vm {

@@ -1,7 +1,7 @@
 Title: Configuration de XFCE avec deux écrans
 Date: 2015-09-03 14:00
 Tags: Debian, GNU/Linux
-Planet: true
+Planet: false
 
 J'ai un portable fraîchement installé sous Debian Jessie avec l'environnement
 de bureau XFCE que j'utilise soit en itinérance, soit en poste fixe avec un
@@ -19,6 +19,7 @@ Voici une capture d'écran de arandr :
 Et un exemple de script généré pour une configuration en double écran avec le
 moniteur externe à droite de l'écran LCD du portable :
 
+    :::shell
     xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --mode 1920x1080 --pos 1366x0 --rotate normal
     
 En utilisant arand je vais facilement générer les deux scripts dont j'ai besoin :
@@ -34,13 +35,14 @@ le moniteur externe est connecté et applique la bonne commande xrandr. Pour
 cela, on édite le fichier de configuration **/etc/lightdm/lightdm.conf** et on
 ajoute la directive *display-setup-script* dans la section SeatDefaults :
 
+    :::ini
     [SeatDefaults] 
     ...
     display-setup-script=/usr/local/bin/lightdm-monitor.sh
 
 et voici le script **lightdm-monitor.sh** :
 
-    #!/bin/bash
+    :::shell
     if (xrandr | grep "VGA1 disconnected"); then
         xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --off
     else    
@@ -59,7 +61,7 @@ programme en ligne de commande de configurationde XFCE) adéquate.
 
 Finalement, cela donne le script **xfce-monitor.sh** au démarrage de la session:
 
-    #!/bin/bash
+    :::shell
     sleep 3
     if (xrandr | grep "VGA1 disconnected"); then
         xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --off

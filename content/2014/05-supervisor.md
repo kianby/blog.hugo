@@ -29,65 +29,60 @@ l'arrêt fiable du processus en manipulant son PID.
 Voici un exemple de script d'init à la sauce Debian pour un programme 
 JAVA :
 
-     #!/bin/sh
-     ### BEGIN INIT INFO
-     # Provides:          monprog
-     # Required-Start:    $local_fs $remote_fs $network $syslog
-     # Required-Stop:     $local_fs $remote_fs $network $syslog
-     # Default-Start:     2 3 4 5
-     # Default-Stop:      0 1 6
-     # X-Interactive:     true
-     # Short-Description: Start/stop monprog
-     ### END INIT INFO
-    
-     BOOT_LOG=/var/log/monprog-boot.log
-     PID_FILE=/opt/monprog/pid
-    
-     start_java () {
-         nohup java -cp "/opt/monprog/lib/*" fr.yax.monprog.Main >$BOOT_LOG 2>&1 &
-         echo $! > $PID_FILE
-         echo "Monprog started ..."
-     }
-    
-     do_start () {
-         echo "Starting Monprog ..."
-         if [ ! -f $PID_FILE ]; then
-             start_java
-         else
-             PID=$(cat $PID_FILE)
-             if [ -d /proc/$PID ]; then
-                 echo "Monprog is already running ..."
-             else
-                 start_java
-             fi
-         fi
-     }
-    
-     do_stop() {
-         echo "Stopping Monprog ..."
-         if [ -f $PID_FILE ]; then
-             PID =$(cat $PID_FILE);
-             kill $PID 2>/dev/null
-             echo "Monprog stopped ..."
-             rm -f $PID_FILE
-         else
-             echo "Monprog seems not running ..."
-         fi
-     }
-    
-     case $1 in
-             start)
-                 do_start
-             ;;
-             stop)
-                 do_stop
-             ;;
-             restart)
-                 do_stop
-                 sleep 1
-                 do_start
-             ;;
-     esac
+    :::shell
+    ### BEGIN INIT INFO
+    # Provides:          monprog
+    # Required-Start:    $local_fs $remote_fs $network $syslog
+    # Required-Stop:     $local_fs $remote_fs $network $syslog
+    # Default-Start:     2 3 4 5
+    # Default-Stop:      0 1 6
+    # X-Interactive:     true
+    # Short-Description: Start/stop monprog
+    ### END INIT INFO
+        BOOT_LOG=/var/log/monprog-boot.log
+    PID_FILE=/opt/monprog/pid
+        start_java () {
+        nohup java -cp "/opt/monprog/lib/*" fr.yax.monprog.Main >$BOOT_LOG 2>&1 &
+        echo $! > $PID_FILE
+        echo "Monprog started ..."
+    }
+        do_start () {
+        echo "Starting Monprog ..."
+        if [ ! -f $PID_FILE ]; then
+            start_java
+        else
+            PID=$(cat $PID_FILE)
+            if [ -d /proc/$PID ]; then
+                echo "Monprog is already running ..."
+            else
+                start_java
+            fi
+        fi
+    }
+        do_stop() {
+        echo "Stopping Monprog ..."
+        if [ -f $PID_FILE ]; then
+            PID =$(cat $PID_FILE);
+            kill $PID 2>/dev/null
+            echo "Monprog stopped ..."
+            rm -f $PID_FILE
+        else
+            echo "Monprog seems not running ..."
+        fi
+    }
+        case $1 in
+            start)
+                do_start
+            ;;
+            stop)
+                do_stop
+            ;;
+            restart)
+                do_stop
+                sleep 1
+                do_start
+            ;;
+    esac
 
 C'est perfectible. Il faudrait tenter l'arrêt avec un signal moins violent
 que SIGKILL de façon à l'intercepter dans le code et faire un arrêt  propre.
@@ -192,14 +187,15 @@ Dans cet exemple, on envoie un signal SIGINT à monprog pour lui demander un arr
 
 #### Interception d'un signal SIGINT en JAVA
 
-     // register a shutdown hook
-     Runtime.getRuntime().addShutdownHook(new Thread() {
-         @Override
-         public void run() {
-             logger.info("Shutting down has been requested");
-             stopCleanly();
-         }
-     });
+    :::java
+    // register a shutdown hook
+    Runtime.getRuntime().addShutdownHook(new Thread() {
+        @Override
+        public void run() {
+            logger.info("Shutting down has been requested");
+            stopCleanly();
+        }
+    });
 
 En conclusion, **Supervisor** est un bon outil de gestion de programmes :
 fiable, facile à installer et à configurer. En complément d'un outil de

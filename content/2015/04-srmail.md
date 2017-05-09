@@ -1,7 +1,7 @@
 Title: SRmail
 Date: 2015-06-09 13:30
 Tags: Développement
-Planet: true
+Planet: false
 
 J'ai développé un petit bout de logiciel nommé, sans grande inspiration, SRmail
 pour "Simple Rest Mail" avec les technos que j'apprécie : le langage Python et
@@ -22,6 +22,7 @@ Python dans un *virtualenv* de préférence, avec le gestionnaire de paquets
 
 Voici un exemple d'envoi d'e-mail en Python :
 
+    :::python
     import requests
     headers = {'Content-Type': 'application/json; charset=utf-8'}
     msg = {
@@ -37,6 +38,7 @@ Voici un exemple d'envoi d'e-mail en Python :
 
 Et voici le même exemple en ligne de commande avec CURL :
 
+    :::shell
     curl -X POST -H "Content-Type: application/json; charset=utf-8"
          -d '{"to":"bill@phoenix.com", "subject":"Got it", 
               "content":"See you soon!\n\n-- John"}'

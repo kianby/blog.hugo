@@ -2,9 +2,9 @@
 # -*- coding: utf-8 -*- #
 
 AUTHOR = u'Yax'
-AUTHOR_EMAIL = '%s@%s' % ('kianby', 'madyanne.fr')
+AUTHOR_EMAIL = '%s@%s' % ('admin', 'madyanne.fr')
 SITENAME = u'Le blog du Yax'
-SITESUBTITLE = u'GNU/Linux et autres libertés'
+SITESUBTITLE = u'GNU, Linux, BSD et autres libertés'
 
 SITEURL = 'http://127.0.0.1:8000'
 RELATIVE_URLS = True

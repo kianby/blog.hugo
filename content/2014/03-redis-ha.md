@@ -1,7 +1,7 @@
 Title: Haute Disponibilité avec Redis
 Date: 2014-04-15 20:00
 Tags: GNU/Linux, Debian, Sysadmin, Développement
-Planet: true
+Planet: false
 
 [Redis](http://redis.io/) est une base de donnée de type clef-valeur. On la
 range dans la grande famille plutôt hétérogène des bases **NoSQL** qui, pour
@@ -155,8 +155,7 @@ nouveau s'adresser aux sentinelles pour récupérer l'adresse du Redis maître.
 
 Voici un exemple typique de code en Python :
 
-    #!/bin/env python
-    
+    :::python
     from redis.sentinel import Sentinel
     sentinel = Sentinel(
         [('192.168.0.51', 26379), ('192.168.0.52', 6379)], socket_timeout=0.1)

@@ -11,45 +11,38 @@ mot de passe).
 
 Ajouter dans **/etc/postfix/main.cf** :
 
-~~~~{.lang-ini}
-  # SMTP relay
-  relayhost = smtp.orange.fr
+    :::ini
+    # SMTP relay
+    relayhost = smtp.orange.fr
 
-  smtpd_sasl_auth_enable = yes
-  smtp_sasl_security_options = noanonymous
-  smtp_sasl_tls_security_options = noanonymous
+    smtpd_sasl_auth_enable = yes
+    smtp_sasl_security_options = noanonymous
+    smtp_sasl_tls_security_options = noanonymous
 
-  smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-  sender_canonical_maps = hash:/etc/postfix/sender_canonical
-~~~~
+    smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+    sender_canonical_maps = hash:/etc/postfix/sender_canonical
 
 Créer un fichier pour définir l'authentification SMTP : **/etc/postfix/sasl_passwd**
 
-~~~~{.lang-ini}
-  smtp.orange.fr [utilisateur]:[mot de passe]
-~~~~
+    smtp.orange.fr [utilisateur]:[mot de passe]
 
 Créer un fichier pour définir le *mapping* des expéditeurs : **/etc/postfix/sender_canonical**
 
-~~~~{.lang-ini}
-  root [adresse expéditeur]
-~~~~
+    root [adresse expéditeur]
 
 Ensuite il rester à créer une version *hash* des fichiers *sasl_passwd* et
 *sender_canonical* et à relancer Postfix :
 
-~~~~{.lang-bash}
-  $ postmap hash:/etc/postix/sasl_passwd
-  $ postmap hash:/etc/postfix/sender_canonical
-  $ /etc/init.d/postfix restart
-~~~~
+    :::shell
+    $ postmap hash:/etc/postix/sasl_passwd
+    $ postmap hash:/etc/postfix/sender_canonical
+    $ /etc/init.d/postfix restart
 
 On peut tester l'envoi d'un e-mail et vérifier dans le log **/var/log/mail.log** que l'envoi se passe bien :
 
-~~~~{.lang-bash}
-  $ mail -s "Test depuis Postfix" [someone@somewhere.com]
-  is it working? 
-  I hope so^D
-~~~~
+    :::shell
+    $ mail -s "Test depuis Postfix" [someone@somewhere.com]
+    is it working? 
+    I hope so^D
 
 

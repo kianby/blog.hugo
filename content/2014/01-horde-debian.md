@@ -1,7 +1,7 @@
 Title: Installation de Horde Groupware 
 Date: 2014-01-02 19:00
 Tags: Hébergement, Mobilité, GNU/Linux, Debian
-Planet: true
+Planet: false
 
 Je remets en place progressivement les outils nécessaires sur mon serveur
 Debian. Je me suis posé à nouveau la problématique de la synchronisation des
@@ -49,12 +49,14 @@ l'équivalent de CPAN pour PERL ou d'APT pour Debian. Horde publie ses
 composants pour l'infrastructure PEAR [sur ce serveur](http://pear.horde.org).
 
 L'installation de PEAR sur Debian est galette.
-
+  
+    :::shell
     apt-get install php-pear
 
 Puis, on enregistre le canal Horde sur Pear et on installe les composants
 nécessaires :
 
+    :::shell
     mkdir -p /var/www/horde
     cd /var/www/horde
     pear channel-discover pear.horde.org
@@ -68,11 +70,13 @@ nécessaires :
 
 Dans le cas de NginX sur Debian, il faut ajuster les permissions du répertoire.
 
+    :::shell
     chown -R www-data:www-data /var/www/horde
 
 Et il faut créer les fichiers de configuration de chaque application à partir
 des modèles fournis :
 
+    :::shell
     cd /var/www/horde/config
     for f in *.dist; do cp $f `basename $f .dist`; done
     cd /var/www/horde/kronolith/config
@@ -87,6 +91,7 @@ des modèles fournis :
 Il reste à configurer NginX. Je force l'utilisation de HTTPS en redirigeant les
 requêtes HTTP vers la version sécurisée du site.
 
+    :::nginx
     server {
       listen 80;
       server_name groupware.exemple.fr;
@@ -126,6 +131,7 @@ Horde propose le choix entre plusieurs bases de données J'utilise déjà MySQL,
 j'ai donc créé une nouvelle base pour Horde en utilisant les outils
 en ligne de commande de MySQL.
 
+    :::shell
     mysql -u root -p 
     mysql> CREATE DATABASE horde;
     mysql> GRANT ALL ON horde.* TO horde@localhost IDENTIFIED BY 'horde';

@@ -1,7 +1,7 @@
 Title: Jouons avec Awk, Bash et Owncloud
 Date: 2015-09-14 14:00
 Tags: GNU/Linux
-Planet: true
+Planet: false
 
 Un souci de synchronisation du calendrier entre Owncloud et mon téléphone a
 été le prétexte à bidouiller une fonctionnalité de rappel des événements par
@@ -112,7 +112,7 @@ L'envoi est réalisé par l'utilitaire **mpack**. Le résultat final espéré po
 notre exemple est ce script :
 
 
-    #!/bin/sh
+    :::shell
     # 
     STARTDATE="`date -d '2015-09-14 10:30:00-000' '+%a %e %b %R'`"
     SUMMARY="Déjeuner avec M."
@@ -169,7 +169,7 @@ régulière.
 
 Voci le script awk complet : 
 
-
+    :::awk
     BEGIN { 
         FS="\n"    
         OFS=""

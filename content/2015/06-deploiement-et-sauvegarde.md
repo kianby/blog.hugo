@@ -1,7 +1,7 @@
 Title: Déploiement et sauvegarde
 Date: 2015-06-21 18:00
 Tags: Hébergement
-Planet: true
+Planet: false
 
 J'ai terminé la migration de mon serveur. [Comme
 annoncé](http://blogduyax.madyanne.fr/hebergement-en-mouvance.html) j'ai
@@ -94,6 +94,7 @@ déroulée.
 
 Voici donc les grandes lignes de la partie **récupération des données** :
 
+    :::shell
     # Les fichiers de configuration de NginX
     cp -r /etc/nginx/* $TARGET_DIR/nginx/.
 
@@ -118,6 +119,7 @@ synchronisée par Owncloud car on l'a copié en douce. Il faut forcer Owncloud �
 rescanner son répertoire avec la commande suivante exécutée en tant
 qu'utilisateur *www-data*: 
 
+    :::shell
     su -c "/usr/bin/php /var/www/owncloud/console.php files:scan all" \
         -s /bin/sh www-data
 
