@@ -1,0 +1,60 @@
+<div class="well" id="sidebar">
+    <p class="title"><i class="fa fa-user fa-lg"></i>{{ $.Site.Author.name }}</p>
+    <p>{{ $.Site.Author.bio }}</p>
+    {{ if .Site.Author.picture }}
+    <p><img src="{{ $.Site.Author.picture }}" alt="{{ .Site.Author.name }}" />
+    {{ end }}
+    {{ if .Site.Author.email }}
+    <p><i class="fa fa-envelope"></i>{{ $.Site.Author.email }}</p>
+    {{ end }}
+    {{- if .Site.Params.widgets.feed1_label }}
+    <p><a href="{{ .Site.Params.widgets.feed1_url }}" rel="alternate"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed1_label }}</a></p>
+    {{ end }}
+    {{- if .Site.Params.widgets.feed2_label }}
+    <p><a href="{{ .Site.Params.widgets.feed2_url }}" rel="alternate"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed2_label }}</a></p>
+    {{ end }}
+    <!-- recent articles -->
+    {{- if .Site.Params.widgets.recent_articles }}
+    <div>
+    	<h4><i class="fa fa-book fa-lg"></i>{{ .Site.Params.widgets.recent_articles_label }}</h4>
+    	<div>
+    		<ul class="sidebar">
+    			{{- $recent_articles_num := (.Site.Params.widgets.recent_articles_num | default 3) }}
+    			{{- range first $recent_articles_num (where .Site.RegularPages "Section" "in" (.Site.Params.postSections | default (slice "post"))) }}
+    			<li class="sidebar"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    			{{- end }}
+    		</ul>
+    	</div>
+    </div>
+    {{- end }}
+    <!-- categories -->
+    {{- if .Site.Params.widgets.categories }}
+    {{- if isset .Site.Taxonomies "categories" }}
+    {{- if not (eq (len .Site.Taxonomies.categories) 0) }}
+    <div>
+    	<h4><i class="fa fa-list fa-lg"></i>{{ .Site.Params.widgets.categories_label }}</h4>
+  		<ul class="sidebar">
+  			{{- range $name, $items := .Site.Taxonomies.categories }}
+  			<li class="sidebar"><a href="{{ "categories/" | relLangURL }}{{ $name | urlize | lower }}">{{ $name | title }}</a></li>
+  			{{- end }}
+  		</ul>
+    </div>
+    {{- end }}
+    {{- end }}
+    {{- end }}
+    <!-- tags -->
+    {{- if .Site.Params.widgets.tags }}
+    {{- if isset .Site.Taxonomies "tags" }}
+    {{- if not (eq (len .Site.Taxonomies.tags) 0) }}
+    <div>
+    	<p><i class="fa fa-tags fa-lg"></i>{{ .Site.Params.widgets.tags_label }}</p>
+      <ul class="sidebar">
+  		    {{- range $name, $items := .Site.Taxonomies.tags }}
+  		    <li class="sidebar"><a href="{{ "tags/" | relLangURL }}{{ $name | urlize | lower }}" title="{{ $name }}">{{ $name }}{{ if $.Site.Params.widgets.tags_counter }} ({{ $items.Count }}){{ end }}</a></li>
+  		    {{- end }}
+      </ul>
+    </div>
+    {{- end }}
+    {{- end }}
+    {{- end }}
+</div>

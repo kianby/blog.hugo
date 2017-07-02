@@ -1,0 +1,80 @@
+<div id="submit-button">
+    <a class="button-success pure-button" href="javascript:show_hide('comment-form','submit-button');">Commenter</a>
+</div>
+
+<div id="comment-form" style="display:none">
+    <form class="pure-form" role="form" action="" autocomplete="off" method="post">
+        <fieldset class="pure-group">
+            <input class="pure-u-1-2" id="author" name="author" type="text" placeholder="Nom ou Surnom *" required>
+            <input class="pure-u-1-2" id="email" name="email" type="email" placeholder="Adresse email (non publié)">
+            <input class="pure-u-1-2" id="site" name="site" type="text" placeholder="Site Web">
+        </fieldset>
+        <fieldset class="pure-group">
+            <textarea id="message" class="pure-u-1-2" name="message" rows="4" placeholder="Votre commentaire * (texte simple ou Markdown)" required></textarea>
+            <div id="preview-container" style="display:none">
+                <p>Prévisualisation en <a href="http://daringfireball.net/projects/markdown/">Markdown</a> :</p>
+                <div id="preview" class="pure-u-1-2 preview-markdown"></div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <label for="subscribe" class="pure-checkbox">
+                <input name="subscribe" id="subscribe"
+                type="checkbox">&nbsp;S'abonner aux commentaires de cet article (adresse email nécessaire)
+            </label>
+            <p><em>(Les champs obligatoires sont notés avec une *)</em></p>
+            <div id="onestpotes" style="display:none">
+                <input id="captcha" name="captcha" type="text" placeholder="Ne pas remplir si vous êtes humain">
+                <!-- <input name="article" id="article" type="hidden" value="article.cacause_article"> -->
+            </div>
+        </fieldset>
+        <button onclick="preview_markdown(); return false" class="button-warning pure-button">Prévisualiser</button>
+        <button type="button" onclick="new_comment(); return false;" class="button-success pure-button">Envoyer</button>
+    </form>
+</div>
+
+<!-- ====================================================== -->
+<!--  Begin section : display comments                      -->
+<!-- ====================================================== -->
+
+<p></p>
+<div id="show-comments-button" style="display:none">
+  <a id="show-comment-label" class="button-success pure-button"
+     href="javascript:show_comments();">Voir le commentaire</a>
+</div>
+
+<!-- stacosys comments container -->
+<div id="stacosys-comments" style="display:none">Chargement...</div>
+
+<!-- stacosys comments template -->
+<script id="stacosys-template" type="x-tmpl-mustache">
+[[#data]]
+<hr>
+<div class="inline">
+[[#site]]
+    <a href="[[site]]">
+[[/site]]
+    <img src="http://www.gravatar.com/avatar/[[avatar]].jpg" style="float:left; margin-right:10px" height="32" width="32">
+[[#site]]
+    </a>
+[[/site]]
+    <span class="title">[[author]]</span>
+    <span> - [[date]]</span>
+</div>
+[[{mdcontent}]]
+[[/data]]
+</script>
+
+<!-- ====================================================== -->
+<!--  End section : display comments                        -->
+<!-- ====================================================== -->
+
+<script type="text/javascript"><!--
+
+var STACOSYS_URL = {{ .Site.Params.widgets.stacosys_url }};
+var STACOSYS_TOKEN = {{ .Site.Params.widgets.stacosys_token }};
+var STACOSYS_PAGE = normalize_url(window.location.pathname);
+console.log(STACOSYS_PAGE)
+
+window.onload = initialize_comments();
+
+--></script>

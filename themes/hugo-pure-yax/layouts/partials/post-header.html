@@ -1,0 +1,19 @@
+<header class="post-header">
+    <p class="post-meta">
+        <i class="fa fa-info-circle fa-md"></i>
+        {{ .Date.Format "02/01/2006" }}
+        {{- if isset .Params "categories" }}
+            {{- $baseUrl := .Site.BaseURL }}
+            {{- range .Params.categories }}, <a class="post-category post-category-{{ . }}" href="{{ $baseUrl }}/categories/{{ . | urlize }}">{{ . }}</a>{{ end }}
+        {{ end }}
+        {{- if isset .Params "author" }}
+        {{ .Site.Params.writtenby }}
+        {{ with .Params.author }}
+             <strong class="post-author">{{ . }}</strong>
+        {{ end }}
+        {{ end }}
+        {{- if .Site.Params.widgets.stacosys_comments }}
+        <span class="comments-counter" style="display:none">{{ .RelPermalink }}</span>
+        {{ end }}
+    </p>
+</header>
