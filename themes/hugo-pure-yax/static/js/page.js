@@ -104,7 +104,7 @@ function new_comment() {
 
 function submit_success(context, data) {
   console.log('submit ' + data);
-  window.location="/redirect.html?p=" + STACOSYS_PAGE;
+  window.location="/documents/redirect.html?p=" + STACOSYS_PAGE;
 }
 
 function submit_failure(error) {
