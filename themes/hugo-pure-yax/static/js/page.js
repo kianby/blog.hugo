@@ -11,17 +11,6 @@ function show_hide(panel_id, button_id){
     }
 }
 
-function normalize_url(url) {
-  var r = url;
-  if (r.endsWith('/')) {
-    r = r.substring(0, r.length-1);
-  }
-  if (r.endsWith('-')) {
-    r = r.substring(0, r.length-1);
-  }
-  return r + ".html";
-}
-
 // --------------------------------------------------------------------------
 //  Load and display page comments
 // --------------------------------------------------------------------------

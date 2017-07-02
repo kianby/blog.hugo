@@ -72,8 +72,7 @@
 
 var STACOSYS_URL = {{ .Site.Params.widgets.stacosys_url }};
 var STACOSYS_TOKEN = {{ .Site.Params.widgets.stacosys_token }};
-var STACOSYS_PAGE = normalize_url(window.location.pathname);
-console.log(STACOSYS_PAGE)
+var STACOSYS_PAGE = window.location.pathname;
 
 window.onload = initialize_comments();
 
