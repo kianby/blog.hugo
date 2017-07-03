@@ -19,10 +19,12 @@
                     <div class="post-description">
                         {{ .Content }}
                     </div>
+                    {{- if not (isset .Params "nocomment") }}
                     {{- if .Site.Params.widgets.stacosys_comments }}
                     <div class="comment">
                       {{ partial "comments.html" . }}
                     </div>
+                    {{ end }}
                     {{ end }}
                 </section>
             </div>
