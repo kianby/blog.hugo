@@ -1,6 +1,6 @@
 +++
 title = "De GNU/Linux à gnuSystemlinuxdGnomeOs"
-slug = "/2017/de-gnu/linux-a-gnusystemlinuxdgnomeos/"
+slug = "/de-gnu/linux-a-gnusystemlinuxdgnomeos/"
 date = "2017-02-27"
 categories = ["GNU/Linux","Humeur"]
 tags = ["planet"]
