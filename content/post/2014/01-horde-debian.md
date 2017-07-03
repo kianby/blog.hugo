@@ -1,7 +1,7 @@
 +++
 title = "Installation de Horde Groupware "
 date = "2014-01-02"
-categories = ["Hébergement","Mobilité","GNU/Linux","Debian"]
+categories = ["Hébergement","Mobilité","Debian"]
 tags = ["planet"]
 +++
 
@@ -11,7 +11,7 @@ contacts et du calendrier entre mes appareils, c'est à dire mon ordinateur
 portable sous ArchLinux avec le logiciel de courrier *Thunderbird* et son
 module de gestion de calendrier *Lightning*, mon antique téléphone BlackBerry
 Bold 9780. Un accès Web à mon calendrier et mes contacts depuis n'importe
-quelle machine quand je suis en déplacement serait un plus. 
+quelle machine quand je suis en déplacement serait un plus.
 
 Le téléphone supporte la synchronisation Google de facto et SyncML en
 installant le client [Funambol](http://www.funambol.com). Je n'ai trouvé aucune
@@ -36,7 +36,7 @@ sortie dans l'année et j'ai décidé de l'évaluer. Horde supporte SyncML,
 CardDAV, CalDav et son interface graphique a été rajeunie.
 
 Ma cible de déploiement est mon serveur privé virtuel avec
-l'environnement technique suivant : 
+l'environnement technique suivant :
 
 - Distribution Debian Wheezy
 - Serveur Web NginX
@@ -51,7 +51,7 @@ l'équivalent de CPAN pour PERL ou d'APT pour Debian. Horde publie ses
 composants pour l'infrastructure PEAR [sur ce serveur](http://pear.horde.org).
 
 L'installation de PEAR sur Debian est galette.
-  
+
     :::shell
     apt-get install php-pear
 
@@ -134,14 +134,14 @@ j'ai donc créé une nouvelle base pour Horde en utilisant les outils
 en ligne de commande de MySQL.
 
     :::shell
-    mysql -u root -p 
+    mysql -u root -p
     mysql> CREATE DATABASE horde;
     mysql> GRANT ALL ON horde.* TO horde@localhost IDENTIFIED BY 'horde';
     mysql> FLUSH PRIVILEGES;
     mysql> EXIT;
 
 A la première connexion Web, il n'y a pas d'authentification, on est connecté
-en tant qu'administrateur sans mot de passe. 
+en tant qu'administrateur sans mot de passe.
 
 #### 1ère étape : définir la base de donnée.
 
@@ -157,13 +157,13 @@ en tant qu'administrateur sans mot de passe.
 
     <img src="/images/2014/horde-database.png"/>
 
-#### 2ème étape : créer un utilisateur avec les droits d'administration. 
+#### 2ème étape : créer un utilisateur avec les droits d'administration.
 
 1. Aller dans le menu Administration / Utilisateur
 
     <img src="/images/2014/horde-user.png"/>
 
-2. Créer un nouvel utilisateur 
+2. Créer un nouvel utilisateur
 
     <img src="/images/2014/horde-adduser.png"/>
 

@@ -1,7 +1,7 @@
 +++
 title = "Deux installations de OpenBSD"
 date = "2017-06-21"
-categories = ["Hébergement","OpenBSD"]
+categories = ["Hébergement","BSD"]
 tags = ["planet"]
 +++
 

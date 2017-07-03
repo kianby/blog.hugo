@@ -1,7 +1,7 @@
 +++
 title = "Mon informatique personnelle"
 date = "2016-05-08"
-categories = ["Debian","Hébergement"]
+categories = ["Hébergement"]
 tags = ["planet"]
 +++
 

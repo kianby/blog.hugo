@@ -1,7 +1,7 @@
 +++
 title = "Emuler la Raspbian avec Qemu"
 date = "2014-08-12"
-categories = ["Debian","Matériel"]
+categories = ["Debian","Matériel","Virtualisation"]
 tags = ["planet"]
 +++
 
@@ -22,13 +22,13 @@ commande suivante :
 
     $ qemu-system-arm -cpu ?
 
-Le résultat liste les types de processeur supportés. On s'assure que **arm1176** est mentionné. 
+Le résultat liste les types de processeur supportés. On s'assure que **arm1176** est mentionné.
 
 ### Installation de base
 
-On se crée un répertoire de travail dans lequel on va télécharger les fichiers nécessaires : 
+On se crée un répertoire de travail dans lequel on va télécharger les fichiers nécessaires :
 
--    le noyau Linux [depuis ce lien](http://xecdesign.com/downloads/linux-qemu/kernel-qemu) 
+-    le noyau Linux [depuis ce lien](http://xecdesign.com/downloads/linux-qemu/kernel-qemu)
 -    l'image de la Raspbian [depuis le site officiel](http://www.raspberrypi.org/downloads)
 
 La modification d'un fichier est nécessaire pour que la distribution
@@ -45,11 +45,11 @@ On commente la première ligne du fichier :
 
     #/usr/lib/arm-linux-gnueabihf/libcofi_rpi.so
 
-On sauvegarde (CTRL-X avec nano) et on arrête l'émulation 
-    
+On sauvegarde (CTRL-X avec nano) et on arrête l'émulation
+
     exit
 
-A ce stade, l'émulation Raspbian sous Qemu est fonctionnelle et on peut faire un vrai démarrage avec la commande : 
+A ce stade, l'émulation Raspbian sous Qemu est fonctionnelle et on peut faire un vrai démarrage avec la commande :
 
     $ qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -no-reboot -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -hda 2014-06-20-wheezy-raspbian.img
 
@@ -63,7 +63,7 @@ D'abord on élargit le disque avec l'utilitaire qemu-resize.
 
     $ qemu-img resize 2014-06-20-wheezy-raspbian.img +2G
 
-Ensuite on démarre la Raspbian avec Qemu 
+Ensuite on démarre la Raspbian avec Qemu
 
     $ qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -no-reboot -serial stdio -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -hda 2014-06-20-wheezy-raspbian.img
 
@@ -78,7 +78,7 @@ On lancer l'utilitaire **fdisk** pour modifier les partitions
 -    supprimer la partition 2 qui commence à l'offset 122880 : commande **d** puis indiquer la partition **2**
 -    recréer une partition 2 qui commence à l'offset 122880 et utilise la totalité du disque : commande **n**
 -    sauvegarder les modifications : commande **w**
--    arrêter le système avec la commande **reboot**. 
+-    arrêter le système avec la commande **reboot**.
 
 On démarre à nouveau la Raspbian avec Qemu et on lance la commande resize2fs
 pour élargir la partition 2 :
@@ -93,7 +93,7 @@ Par défaut, on a une résolution en 640x480 quand on lance LXDE avec
 
     # sudo nano /etc/X11/xorg.conf
 
-Ajouter ces lignes dans le fichier : 
+Ajouter ces lignes dans le fichier :
 
     Section "Screen"
     Identifier "Default Screen"
@@ -103,7 +103,7 @@ Ajouter ces lignes dans le fichier :
     EndSubSection
     EndSection
 
-Sauvegarde et redémarrer X pour voir le résultat. 
+Sauvegarde et redémarrer X pour voir le résultat.
 
 ### Déplacements erratiques de la souris
 
@@ -113,9 +113,8 @@ résolu en lançant Qemu ainsi :
 
     qemu-system-arm -kernel kernel-qemu -cpu arm1176 -m 256 -M versatilepb -no-reboot -serial stdio -usbdevice tablet -display sdl -append "root=/dev/sda2 panic=1 rootfstype=ext4 rw" -hda 2014-06-20-wheezy-raspbian.img
 
-Notez le paramètre *-usbdevice tablet* et *-display sdl*. 
+Notez le paramètre *-usbdevice tablet* et *-display sdl*.
 
 ### Conclusion
 
-L'émulation Qemu permet de se faire une bonne idée de la distribution. Bien sûr, ce n'est pas complètement fonctionnel car certains périphériques spécifiques au Raspberry ne sont pas présent (je pense aux entrées / sortie, au port HDMI) mais cela permet déjà beaucoup. 
-
+L'émulation Qemu permet de se faire une bonne idée de la distribution. Bien sûr, ce n'est pas complètement fonctionnel car certains périphériques spécifiques au Raspberry ne sont pas présent (je pense aux entrées / sortie, au port HDMI) mais cela permet déjà beaucoup.

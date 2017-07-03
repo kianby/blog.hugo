@@ -1,7 +1,7 @@
 +++
 title = "Premiers pas avec Diaspora"
 date = "2014-11-02"
-categories = ["Web","Humeur"]
+categories = ["Humeur"]
 tags = ["planet"]
 +++
 
@@ -79,7 +79,7 @@ lourdes pour Facebook ou Twitter qui facilitent l'instantanéité: un clic pour
 partager une photo. Seul un barbu dégainera son valeureux téléphone Firefox
 pour ouvrir un navigateur sur Diaspora et ensuite naviguer sur son système de
 fichier pour trouver la photo à publier. Des bonnes applications mobiles sont
-nécessaires pour faire décoller le réseau. 
+nécessaires pour faire décoller le réseau.
 
 Pour les pays émergents, Diaspora pourrait s'imposer par de la pub vers les
 utilisateurs finaux. Il faut aussi que les temps d'accès soient corrects, ce

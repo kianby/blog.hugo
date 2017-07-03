@@ -1,7 +1,7 @@
 +++
 title = "Installation de Shinken"
 date = "2014-09-15"
-categories = ["GNU/Linux","sysadmin"]
+categories = ["GNU/Linux"]
 tags = ["planet"]
 +++
 
@@ -149,10 +149,3 @@ superviser. L'installation de [NRPE est bien décrite dans cet
 article](http://xmodulo.com/2014/03/nagios-remote-plugin-executor-nrpe-
 linux.html). Pour finir, beaucoup de resources Nagios sont disponibles sur
 le site [Nagios Exchange](http://exchange.nagios.org).
-
-
-
-
-
-
-

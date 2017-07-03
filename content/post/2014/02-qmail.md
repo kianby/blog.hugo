@@ -1,7 +1,7 @@
 +++
 title = "SMTP Relay avec qmail sur Debian Wheezy"
 date = "2014-01-22"
-categories = ["GNU/Linux","Debian","Sysadmin"]
+categories = ["Debian"]
 tags = ["planet"]
 +++
 
@@ -34,7 +34,7 @@ Internet. On peut forcer qmail à n'écouter que sur l'interface loopback en
 modifiant le script de démarrage. Ce n'est pas l'idéal mais vu la fréquence de
 mise à jour de qmail, on ne craint pas trop de voir cette modification écrasée.
 Il faut remplacer *0* par *127.0.0.1* dans le fichier
-**/etc/qmail/qmail-smtpd/run**. 
+**/etc/qmail/qmail-smtpd/run**.
 
 Voici la version modifiée :
 
@@ -74,7 +74,7 @@ le relais dans le fichier **/etc/qmail/smtproutes** :
 Pour tester on relance qmail :
 
     :::shell
-    qmailctl stop 
+    qmailctl stop
     qmailctl start
 
 Et on tente l'envoi d'un email avec la commande mail :

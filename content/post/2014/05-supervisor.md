@@ -1,11 +1,11 @@
 +++
 title = "Supervisor, gestion de processus"
 date = "2014-05-25"
-categories = ["GNU/Linux","Sysadmin"]
+categories = ["GNU/Linux"]
 tags = ["planet"]
 +++
 
-Quand il s'agit de déployer des programmes de son cru sur un serveur 
+Quand il s'agit de déployer des programmes de son cru sur un serveur
 GNU/Linux, on réalise généralement deux actions :
 
 -    l'écriture d'un script de démarrage et arrêt du programme
@@ -28,7 +28,7 @@ code, de manière rustique avec un
 [nohup](https://en.wikipedia.org/wiki/Nohup), auquel cas il faut gérer
 l'arrêt fiable du processus en manipulant son PID.
 
-Voici un exemple de script d'init à la sauce Debian pour un programme 
+Voici un exemple de script d'init à la sauce Debian pour un programme
 JAVA :
 
     :::shell
@@ -111,8 +111,8 @@ permet d'obtenir la version la plus récente de Supervisor.
 
 Supervisor est composé de deux parties :
 
--   un service **Supervisord** 
--   un client en mode console : **Supervisorctl** 
+-   un service **Supervisord**
+-   un client en mode console : **Supervisorctl**
 
 Le client permet d'interagir avec les programmes gérés : démarrer, stopper.
 Une interface RPC permet aussi de piloter Supervisord programmatiquement ; je
@@ -123,7 +123,7 @@ connexion du client supervisorctl (section unix_http_server), la config RPC
 (section rpcinterface) et le répertoire des configuration des programmes à
 gérer (section includes).
 
-Voici une configuration type : 
+Voici une configuration type :
 
 #### /etc/supervisor/supervisord.conf
 
@@ -131,18 +131,18 @@ Voici une configuration type :
      file=/var/run//supervisor.sock   ; (the path to the socket file)
      chmod=0770                       ; sockef file mode (default 0700)
      chown=root:supervisor
-    
+
      [supervisord]
      logfile=/var/log/supervisor/supervisord.log
      pidfile=/var/run/supervisord.pid
      childlogdir=/var/log/supervisor
-    
+
      [rpcinterface:supervisor]
      supervisor.rpcinterface_factory = supervisorrpcinterface:make_main_rpcinterface
-    
+
      [supervisorctl]
      serverurl=unix:///var/run//supervisor.sock
-    
+
      [include]
      files = /etc/supervisor/conf.d/*.conf
 
@@ -166,18 +166,18 @@ groupes, faire des démarrages groupés et des arrêts groupés. C'est utile si 
 priorités pour ordonner le lancement des programmes du groupe.
 
 Voici un exemple qui définit un groupe mesprogrammes composé de 2 programmes correspondant au même binaire.  
- 
+
 #### /etc/supervisor/conf.d/mesprogrammes.conf
 
      [group:mesprogrammes]
      programs=monprog1,monprog2
-    
+
      [program:monprog1]
      directory=/opt/monprogram
      command=/usr/bin/java -DrunDir=/opt/monprog -cp "lib/*" fr.yax.monprog.Main --port 1234
      stopsignal=INT
      priority=500
-    
+
      [program:monprog2]
      directory=/opt/monprogram
      command=/usr/bin/java -DrunDir=/opt/monprog -cp "lib/*" fr.yax.monprog.Main --port 1235

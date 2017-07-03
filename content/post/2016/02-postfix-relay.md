@@ -1,7 +1,7 @@
 +++
 title = "SMTP Relay avec Postfix"
 date = "2016-01-25"
-categories = ["GNU/Linux","Sysadmin"]
+categories = ["GNU/Linux"]
 tags = ["planet"]
 +++
 
@@ -9,7 +9,7 @@ On trouve de l'information sur le relais SMTP avec Postfix un peu partout mais
 pas toujours adapté à son cas. Voici donc mon mémo, compîlé à partir de
 plusieurs sources, pour utiliser Postfix comme relais SMTP avec le fournisseur
 Orange (sur le port 25 et authentifié en clair par un nom d'utilisateur et un
-mot de passe). 
+mot de passe).
 
 Ajouter dans **/etc/postfix/main.cf** :
 
@@ -44,7 +44,5 @@ On peut tester l'envoi d'un e-mail et vérifier dans le log **/var/log/mail.log*
 
     :::shell
     $ mail -s "Test depuis Postfix" [someone@somewhere.com]
-    is it working? 
+    is it working?
     I hope so^D
-
-

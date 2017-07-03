@@ -2,7 +2,7 @@
 title = "De GNU/Linux à gnuSystemlinuxdGnomeOs"
 slug = "/de-gnu/linux-a-gnusystemlinuxdgnomeos/"
 date = "2017-02-27"
-categories = ["GNU/Linux","Humeur"]
+categories = ["GNU/Linux","BSD","Humeur"]
 tags = ["planet"]
 +++
 

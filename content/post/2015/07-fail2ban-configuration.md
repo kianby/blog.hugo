@@ -1,7 +1,7 @@
 +++
 title = "Configuration de Fail2Ban"
 date = "2015-08-10"
-categories = ["Sysadmin","Hébergement"]
+categories = ["Hébergement"]
 tags = ["planet"]
 +++
 
@@ -41,7 +41,7 @@ jamais (pour éviter de perdre les modifications lors des mises à jour de
 fail2ban). On préfère redéfinir les parties de la configurations modifiées dans
 un fichier *jail.local*. Pour rajouter une action personnalisée, on va donc
 rajouter un fichier d'action dans */etc/fail2ban/action.d* et décrire quand et
-comment l'appliquer dans *jail.local*. 
+comment l'appliquer dans *jail.local*.
 
 J'ai donc dupliqué le fichier d'action *sendmail-buffered* et je l'ai adapté
 pour créer *sendmail-cron*. Pourquoi CRON ? Et bien l'idée est la suivante :
@@ -113,7 +113,7 @@ le fichier */etc/fail2ban/action.d/sendmail-cron.conf* complet :
     # Notes.:  command executed once before each actionban command
     # Values:  CMD
     #
-    actioncheck = 
+    actioncheck =
 
     # Option:  actionban
     # Notes.:  command executed when banning an IP. Take care that the
@@ -141,7 +141,7 @@ le fichier */etc/fail2ban/action.d/sendmail-cron.conf* complet :
     # Tags:    See jail.conf(5) man page
     # Values:  CMD
     #
-    actionunban = 
+    actionunban =
 
     [Init]
 
@@ -171,7 +171,7 @@ soutenues pour que ce rapport soit bien envoyé à une fréquence journalière ;
 
 Il reste à configurer fail2ban pour utiliser cette nouvelle action. J'ai
 redéfini dans ma configuration *jail.local* les actions à appliquer sur
-détection d'attaque : d'abord on bloque, ensuite on informe : 
+détection d'attaque : d'abord on bloque, ensuite on informe :
 
     :::ini
     action_mwlc = %(banaction)s[name=%(__name__)s, port="%(port)s", protocol="%(protocol)s", chain="%(chain)s"]

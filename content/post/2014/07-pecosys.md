@@ -1,7 +1,7 @@
 +++
 title = "Pecosys, les commentaires avec Pelican"
 date = "2014-08-07"
-categories = ["GNU/Linux","Hébergement","Web"]
+categories = ["Hébergement","Blog"]
 tags = ["planet"]
 +++
 
@@ -39,7 +39,7 @@ CSS et éventuellement un zeste de JavaScript. Ces pages sont transférées vers
 le serveur HTTP hébergeant le site... et hop le site est à jour.
 
 Alors pourquoi s'embêter à gérer un site statique alors qu'un Wordpress
-s'installe en 5 minutes ? 
+s'installe en 5 minutes ?
 
 Cela dépend de tout un chacun mais j'y suis venu pour les raisons suivantes :
 
@@ -58,7 +58,7 @@ client par l'usage de JavaScript, envoie des requêtes à Disqus pour rapatrier
 les commentaires approuvées et les ajouter à la page HTML qui vient de votre
 serveur.
 
-Est-ce que vous sentez venir l'objection ? 
+Est-ce que vous sentez venir l'objection ?
 
 D'abord on met en place une belle mécanique,très pure, où l'on contrôle le
 contenu, l'affichage, puis on confie la partie sensible (les données
@@ -72,19 +72,19 @@ Dommage non ?
 
 #### L'approche Pecosys
 
-Pecosys est un serveur de commentaires écrit en Python que vous hébergez sur le même serveur que votre blog. Il reçoit les commentaires à approuver depuis le blog par le biais d'un formulaire sur le blog. Pour cela, les *templates* de Pelican ont été adaptés afin de rajouter ce formulaire en bas de chaque article. 
+Pecosys est un serveur de commentaires écrit en Python que vous hébergez sur le même serveur que votre blog. Il reçoit les commentaires à approuver depuis le blog par le biais d'un formulaire sur le blog. Pour cela, les *templates* de Pelican ont été adaptés afin de rajouter ce formulaire en bas de chaque article.
 
 Le lien entre le blog statique et le serveur Pecosys est réalisé par grâce au serveur Web. Dans le cas de NginX, il est trivial d'associer une URL à un programme Python. Dans le cas d'Apache, c'est faisable facilement en utilisant le module Proxy. Bref, le serveur Pecosys est d'abord un serveur HTTP sur lequel on poste les commentaires entrés par un formulaire classique de création de commentaires.  
 
-Quand un commentaire est reçu, le serveur va faire deux trucs : sauvegarder le commentaire et le soumettre à l'administrateur du blog. 
+Quand un commentaire est reçu, le serveur va faire deux trucs : sauvegarder le commentaire et le soumettre à l'administrateur du blog.
 
-La sauvegarde se fait grâce à GIT. Ah j'avais pas encore parlé de GIT :-) On suppose qu'on est dans une architecture centralisée où le blog est modifié depuis une machine de développeur et poussé (au sens GIT: PUSH) vers un *bare repository*. Dans mon cas, cette référence centrale des sources est sous BitBucket car ils acceptent la création de dépôts privés gratuitement et que je ne veux pas publier les adresses emails de tous ceux qui ont laissé un commentaire sur le blog. Souvenez-vous les commentaires font désormais partie des sources du blog, on verra comment plus loin. 
+La sauvegarde se fait grâce à GIT. Ah j'avais pas encore parlé de GIT :-) On suppose qu'on est dans une architecture centralisée où le blog est modifié depuis une machine de développeur et poussé (au sens GIT: PUSH) vers un *bare repository*. Dans mon cas, cette référence centrale des sources est sous BitBucket car ils acceptent la création de dépôts privés gratuitement et que je ne veux pas publier les adresses emails de tous ceux qui ont laissé un commentaire sur le blog. Souvenez-vous les commentaires font désormais partie des sources du blog, on verra comment plus loin.
 
 Donc, pour résumer :
 
 -     j'écris mes articles sur ma machine de dev perso, je publie dans GIT et je pousse mes modifications au GIT centralisé de BitBucket (au sens GIT: ORIGIN).
--     mon serveur vérifie périodiquement si le dépôt BitBucket a été modifié et si c'est le cas, il rapatrie les sources du blog et reconstruit le site grâce à sa mécanique Pelican installée localement. 
--     Pecosys a sa propre version du blog (au sens GIT: CLONE) maintenue à jour de BitBucket. 
+-     mon serveur vérifie périodiquement si le dépôt BitBucket a été modifié et si c'est le cas, il rapatrie les sources du blog et reconstruit le site grâce à sa mécanique Pelican installée localement.
+-     Pecosys a sa propre version du blog (au sens GIT: CLONE) maintenue à jour de BitBucket.
 
 Donc quand Pecosys reçoit un nouveau commentaire, il met à jour sa version du
 blog (la branche MASTER) et il crée une nouvelle branche XYZ pour ce
@@ -126,12 +126,8 @@ l'email et son utilisation *forcenée* de GIT.
 Je teste Pecosys depuis deux semaines sur ce site et je suis prêt à donner un
 coup de main à quiconque veut se lancer. Sur GitHub, j'ai publié les sources
 du serveur mais aussi une version allégée de ce site (sans les commentaires)
-qui contient donc mes *templates* avec le formulaire et les sources du plugin. 
+qui contient donc mes *templates* avec le formulaire et les sources du plugin.
 
 En attendant je retourne à mon farniente estival :-)
 
 <img src="/images/2014/lemon.jpg"/>
-
- 
-
-

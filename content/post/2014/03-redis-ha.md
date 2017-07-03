@@ -2,7 +2,7 @@
 title = "Haute Disponibilité avec Redis"
 slug = "haute-disponibilite-avec-redis"
 date = "2014-04-15"
-categories = ["GNU/Linux","Debian","Sysadmin","Développement"]
+categories = ["Cluster"]
 tags = ["planet"]
 +++
 

@@ -2,7 +2,7 @@
 title = "Retour d'expérience Ubuntu Touch"
 slug = "retour-dexperience-ubuntu-touch"
 date = "2015-12-12"
-categories = ["GNU/Linux","Mobilité"]
+categories = ["Mobilité"]
 tags = ["planet"]
 +++
 

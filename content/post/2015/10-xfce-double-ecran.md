@@ -2,7 +2,7 @@
 title = "Configuration de XFCE avec deux écrans"
 slug = "configuration-de-xfce-avec-deux-ecrans"
 date = "2015-09-03"
-categories = ["Debian","GNU/Linux"]
+categories = ["GNU/Linux"]
 tags = ["planet"]
 +++
 

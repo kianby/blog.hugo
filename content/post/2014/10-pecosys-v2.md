@@ -1,7 +1,7 @@
 +++
 title = "Du nouveau sur Pecosys"
 date = "2014-10-23"
-categories = ["GNU/Linux","Hébergement","Web"]
+categories = ["Hébergement","Blog"]
 tags = ["planet"]
 +++
 
@@ -37,5 +37,3 @@ installées tout récemment :
 
 L'ensemble des sources et une documentation plus technique  est publié [sur mon
 GitHub.](https://github.com/kianby/pecosys)
-
-

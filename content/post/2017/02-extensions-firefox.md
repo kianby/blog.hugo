@@ -1,7 +1,7 @@
 +++
 title = "Mes extensions Firefox en 2017"
 date = "2017-02-02"
-categories = ["Web"]
+categories = ["Mozilla"]
 tags = ["planet"]
 +++
 
@@ -53,4 +53,3 @@ alternative crédible à Firefox.
 - [Firebreak](https://addons.mozilla.org/fr/firefox/addon/firebreak/?src=search) : trouver le point de rupture dans les *responsive designs*
 - [En-tête HTTP](http://livehttpheaders.mozdev.org) : afficher les en-têtes HTTP
 - [Cookie Manager](https://addons.mozilla.org/en-US/firefox/addon/cookies-manager-plus) : gestion des cookies installés
-

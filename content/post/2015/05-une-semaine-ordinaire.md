@@ -1,7 +1,7 @@
 +++
 title = "Une semaine ordinaire"
 date = "2015-06-13"
-categories = ["Sysadmin"]
+categories = ["Humeur"]
 tags = ["planet"]
 +++
 

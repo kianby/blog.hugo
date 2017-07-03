@@ -2,7 +2,7 @@
 title = "Back to roots : BASH"
 slug = "back-to-roots-bash"
 date = "2015-04-30"
-categories = ["Sysadmin"]
+categories = ["GNU/Linux"]
 tags = ["planet"]
 +++
 

@@ -1,7 +1,7 @@
 +++
 title = "Un serveur SVN en 5 minutes"
 date = "2017-02-10"
-categories = ["Hébergement","Développement"]
+categories = ["Développement"]
 tags = ["planet"]
 +++
 
@@ -100,4 +100,3 @@ Finalement, on met le service en démarrage automatique et on lance notre serveu
     $ systemctl start svnserve
 
 Notre SVN est accessible en **svn://mon_serveur/yaxsoft**.
-

@@ -2,7 +2,7 @@
 title = "L'obsolescence repoussée"
 slug = "lobsolescence-repoussee"
 date = "2015-09-23"
-categories = ["GNU/Linux","Matériel","Humeur"]
+categories = ["Matériel","Humeur"]
 tags = ["planet"]
 +++
 

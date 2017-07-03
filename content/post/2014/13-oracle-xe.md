@@ -1,7 +1,7 @@
 +++
 title = "Installer Oracle Express sur Centos"
 date = "2014-12-07"
-categories = ["GNU/Linux","Sysadmin"]
+categories = ["GNU/Linux"]
 tags = ["planet"]
 +++
 
@@ -52,19 +52,19 @@ commande *configure* du service *oracle-xe* :
     be starting upon system boot, the ports it will use, and the passwords that
     will be used for database accounts.  Press <enter> to accept the defaults.
     Ctrl-C will abort.
-    
+
     Specify the HTTP port that will be used for Oracle Application Express [8080]:
-    
+
     Specify a port that will be used for the database listener [1521]:
-    
+
     Specify a password to be used for database accounts.  Note that the same
     password will be used for SYS and SYSTEM.  Oracle recommends the use of
     different passwords for each database account.  This can be done after
     initial configuration:
     Confirm the password:
-    
+
     Do you want Oracle Database 11g Express Edition to be started on boot (y/n) [y]:y
-    
+
     Starting Oracle Net Listener...Done
     Configuring database...Done
     Starting Oracle Database 11g Express Edition instance...Done
@@ -121,4 +121,3 @@ Les références pour écrire cet article :
 -   [http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on](http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on)
 -   [https://stackoverflow.com/questions/18028942/oracle-xe-database-configuration-failed](https://stackoverflow.com/questions/18028942/oracle-xe-database-configuration-failed)
 -   [http://blog.warp11.nl/2011/05/fully-freeware-apex-environment-i-centos-oracle-xe-11g](http://blog.warp11.nl/2011/05/fully-freeware-apex-environment-i-centos-oracle-xe-11g)
-
