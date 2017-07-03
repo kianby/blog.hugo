@@ -1,5 +1,6 @@
 +++
 title = "De GNU/Linux à gnuSystemlinuxdGnomeOs"
+slug = "/2017/de-gnu/linux-a-gnusystemlinuxdgnomeos/"
 date = "2017-02-27"
 categories = ["GNU/Linux","Humeur"]
 tags = ["planet"]
@@ -48,7 +49,7 @@ Gnome qui a envie de passer à la vitesse supérieure et qui est le seul DE en
 position de le faire aujourd'hui. Donc cette élaboration d'une API standard
 entre les distributions serait la justification aux modules engrangés par
 systemd: gérer les points de montage, remplacer CRON, résoudre le DNS [avec
-brio](https://www.blog-libre.org/2017/04/20/essuyer-les-platres-dns-sur-ubuntu). 
+brio](https://www.blog-libre.org/2017/04/20/essuyer-les-platres-dns-sur-ubuntu).
 
 En tirant une ligne vers l'horizon et en fermant un oeil, on voit la finalité :
 Linux, Systemd, Wayland, Gnome => un Linux Desktop OS avec un niveau de
@@ -90,7 +91,7 @@ envient leurs collègues certifiés Microsoft apprécieront même.
 
 Mais Linux ne sera plus un système UNIX... Et si je veux utiliser un UNIX-Like
 j'ai Android, et bientôt Windows 10 vu la vitesse du rapprochement de Microsoft
-avec Canonical. 
+avec Canonical.
 
 Donc si je veux utiliser un système UNIX, il me reste :
 
@@ -100,6 +101,6 @@ Donc si je veux utiliser un système UNIX, il me reste :
 J'ai donc décidé de n'utiliser plus que des systèmes qui respectent ces
 critères. Ca n'empêchera pas la terre de tourner et *gnuSystemlinuxdGnomeOs* de
 voir le jour et occuper sa place mais, comme pour le 7 mai prochain, c'est à
-chacun de se positionner en son âme et conscience. 
+chacun de se positionner en son âme et conscience.
 
 Moi j'ai choisi UNIX.
