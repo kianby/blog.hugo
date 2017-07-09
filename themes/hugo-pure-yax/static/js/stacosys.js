@@ -48,12 +48,12 @@ function xdr(article_url, context, api_url, method, data, header, callback, errb
 }
 
 function stacosys_get_count(article_url, context, callback, errback) {
-  var api_url = STACOSYS_URL + '/comments/count?token=' + STACOSYS_TOKEN + '&url=' + article_url;
+  var api_url = STACOSYS_HTTP_URL + '/comments/count?token=' + STACOSYS_TOKEN + '&url=' + article_url;
   xdr(article_url, context, api_url, 'GET', null, {}, callback, errback);
 }
 
 function stacosys_load_comments(article_url, callback, errback) {
-  var api_url = STACOSYS_URL + '/comments?token=' + STACOSYS_TOKEN + '&url=' + article_url;
+  var api_url = STACOSYS_HTTP_URL + '/comments?token=' + STACOSYS_TOKEN + '&url=' + article_url;
   xdr(article_url, null, api_url, 'GET', null, {}, callback, errback);
 }
 

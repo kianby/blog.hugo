@@ -70,7 +70,8 @@
 
 <script type="text/javascript"><!--
 
-var STACOSYS_URL = {{ .Site.Params.widgets.stacosys_url }};
+var STACOSYS_URL = 'https://{{ .Site.Params.widgets.stacosys_host }}';
+var STACOSYS_HTTP_URL = 'http://{{ .Site.Params.widgets.stacosys_host }}';
 var STACOSYS_TOKEN = {{ .Site.Params.widgets.stacosys_token }};
 var STACOSYS_PAGE = window.location.pathname;
 
