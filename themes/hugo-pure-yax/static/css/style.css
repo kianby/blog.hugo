@@ -47,24 +47,27 @@ pre {
 }
 
 #banner {
-    background-color: #EEEEEE;
     min-height: 20px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
-    font-size: 20px;
-    font-weight: bold;
+
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#cfe7fa+0,6393c1+67 */
+    background: rgb(207,231,250); /* Old browsers */
+    background: -moz-linear-gradient(left, rgba(207,231,250,1) 0%, rgba(99,147,193,1) 67%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 67%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, rgba(207,231,250,1) 0%,rgba(99,147,193,1) 67%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cfe7fa', endColorstr='#6393c1',GradientType=1 ); /* IE6-9 */
 }
 
 #banner a {
-    color: #666666;
+    color: #000000;
 }
 
 #banner a:hover, a:focus {
-    color: #0099DD;
+    color: #49775B;
 }
 
 #banner p {
     display:inline;
-    font-weight: normal;
     margin: 0 9px;
 }
 
@@ -190,4 +193,57 @@ li.sidebar {
 }
 li.sidebar:before {
   content: "\A4 \ ";
+}
+
+/* Pure CSS is default style for tables  */
+
+table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+table caption {
+    color: #000;
+    font: italic 85%/1 arial, sans-serif;
+    padding: 1em 0;
+    text-align: center;
+}
+
+table td,
+table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
+
+/* Consider removing this next declaration block, as it causes problems when
+there's a rowspan on the first cell. Case added to the tests. issue#432 */
+table td:first-child,
+table th:first-child {
+    border-left-width: 0;
+}
+
+table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+table td {
+    background-color: transparent;
+}
+table td {
+    background-color: #f2f2f2;
 }
