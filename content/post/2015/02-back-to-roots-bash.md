@@ -41,11 +41,12 @@ codes](https://wiki.archlinux.org/index.php/Color_Bash_Prompt).  Il ne faut pas
 oublier de réinitialiser la couleur en fin de prompt pour que ça ne coule pas
 sur le reste de la ligne avec un reset. je suis adepte des prompts concis :
 
-    :::shell
+{{< highlight bash >}}
     White='\e[0;37m'        # White
     Red='\e[0;31m'          # Red
     Reset=$(tput sgr0)
     PS1="\[$White\]\u:\[$Red\]\w\[$White\] \$\[$Reset\] "
+{{< /highlight >}}
 
 Pour des prompts plus sophistiqués, on peut utiliser des fonctions shell pour
 ajouter des informations dynamiques en fonction du contexte, les infos GIT dans
@@ -58,17 +59,19 @@ est un parfait exemple facile à configurer.
 les alias sont des substitutions de commandes. On peut les utiliser pour éviter
 de mémoriser des paramètres compliquées en définissant de nouvelles commandes :
 
-    :::shell
+{{< highlight bash >}}
     alias la='ll -A'    # 'la' : voir les fichiers cachés
     alias lk='ls -lSr'  # 'lk' : trier par taille
+{{< /highlight >}}
 
 Ou bien on peut redéfinir le comportement d'une commande en créant un alias du
 même nom forçant des paramètres :
 
-    :::shell
+{{< highlight bash >}}
     # forcer une demande de confirmation pour éviter les boulettes
     alias rm='rm --interactive --verbose'
     alias mv='mv --interactive --verbose'
+{{< /highlight >}}
 
 Quant aux fonctions, elles permettent de définir des commandes en langage shell
 directement dans le fichier .bashrc. On peut facilement abuser de cette
@@ -78,7 +81,7 @@ exécutables accessibles dans le PATH (/usr/local/bin au hasard).
 
 Voici les deux fonctions que j'utilise assez régulièrement :
 
-    :::shell
+{{< highlight bash >}}
     function bak() { cp "$1" "$1_`date +%Y-%m-%d_%H-%M-%S`" ; }
 
     function extract()      # Handy Extract Program
@@ -102,6 +105,7 @@ Voici les deux fonctions que j'utilise assez régulièrement :
             echo "'$1' is not a valid file!"
         fi
     }
+{{< /highlight >}}
 
 ### Les couleurs de LS
 
@@ -111,12 +115,13 @@ bashrc testent si dircolors est présent et l'utilise en rajoutant --color à
 ls par le biais d'un... alias (bravo à ceux qui n'ont pas lâché). Généralement,
 on a une section de ce genre dans notre .bashrc :
 
-    :::shell
+{{< highlight bash >}}
     # enable color support of ls
     if [ -x /usr/bin/dircolors ]; then
         test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
         alias ls='ls --color=auto'
     fi
+{{< /highlight >}}
 
 Si vous avez une section de ce genre, vos commande ls sont déjà colorisées.
 Mais le choix des couleurs et le style est configurable en exportant une
@@ -203,9 +208,9 @@ pour l'affichage des répertoire mais en style non gras, je mets par contre en
 gras les répertoire ouverts à tous les vents (avec les droits d'écriture sur le
 groupe *other*), et en rouge non gras les fichiers exécutables.
 
-    :::shell
+{{< highlight bash >}}
     export LS_COLORS="di=00;34:ow=01;34:ex=00;31"
-
+{{< /highlight >}}
 
 J'espère que ces quelques exemples donnent envie de plonger dans les arcanes du
 fichier .bashrc pour l'ajuster à sa sauce et utiliser un peu plus la ligne de

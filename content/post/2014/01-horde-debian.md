@@ -52,13 +52,12 @@ composants pour l'infrastructure PEAR [sur ce serveur](http://pear.horde.org).
 
 L'installation de PEAR sur Debian est galette.
 
-    :::shell
     apt-get install php-pear
 
 Puis, on enregistre le canal Horde sur Pear et on installe les composants
 nécessaires :
 
-    :::shell
+{{< highlight bash >}}
     mkdir -p /var/www/horde
     cd /var/www/horde
     pear channel-discover pear.horde.org
@@ -69,16 +68,16 @@ nécessaires :
     pear install horde/kronolith
     pear install horde/mnemo
     pear install horde/Horde_SyncMl
+{{< /highlight >}}
 
 Dans le cas de NginX sur Debian, il faut ajuster les permissions du répertoire.
 
-    :::shell
     chown -R www-data:www-data /var/www/horde
 
 Et il faut créer les fichiers de configuration de chaque application à partir
 des modèles fournis :
 
-    :::shell
+{{< highlight bash >}}
     cd /var/www/horde/config
     for f in *.dist; do cp $f `basename $f .dist`; done
     cd /var/www/horde/kronolith/config
@@ -89,11 +88,12 @@ des modèles fournis :
     for f in *.dist; do cp $f `basename $f .dist`; done
     cd /var/www/horde/mnemo/config
     for f in *.dist; do cp $f `basename $f .dist`; done
+{{< /highlight >}}
 
 Il reste à configurer NginX. Je force l'utilisation de HTTPS en redirigeant les
 requêtes HTTP vers la version sécurisée du site.
 
-    :::nginx
+{{< highlight nginx >}}
     server {
       listen 80;
       server_name groupware.exemple.fr;
@@ -128,12 +128,12 @@ requêtes HTTP vers la version sécurisée du site.
       }
 
     }
+{{< /highlight >}}
 
 Horde propose le choix entre plusieurs bases de données J'utilise déjà MySQL,
 j'ai donc créé une nouvelle base pour Horde en utilisant les outils
 en ligne de commande de MySQL.
 
-    :::shell
     mysql -u root -p
     mysql> CREATE DATABASE horde;
     mysql> GRANT ALL ON horde.* TO horde@localhost IDENTIFIED BY 'horde';

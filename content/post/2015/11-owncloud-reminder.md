@@ -56,7 +56,7 @@ Et la table *oc_clndr_objects* contient les évènements :
     | lastmodified | int(11)          | YES  |     | 0                   |                |
     +--------------+------------------+------+-----+---------------------+----------------+
 
-On peut récupérer les évènements du jour courant avec la requête suivante : 
+On peut récupérer les évènements du jour courant avec la requête suivante :
 
     mysql> SELECT startdate,summary,calendardata FROM oc_clndr_objects WHERE calendarid = 1 AND DATE(startdate) = DATE(NOW()) ORDER by startdate \G;
     *************************** 1. row ***************************
@@ -101,11 +101,11 @@ On peut récupérer les évènements du jour courant avec la requête suivante :
     END:VEVENT
     END:VCALENDAR
 
-Les colonnes intéressantes sont : 
+Les colonnes intéressantes sont :
 
 - *calendarid* pour filtrer les évènements de notre utilisateur Owncloud
-- *summary* : le libellé de l'évènement 
-- *startdate* : la date de début de l'évènement 
+- *summary* : le libellé de l'évènement
+- *startdate* : la date de début de l'évènement
 - *calendardata* : l'évènement au format iCalendar
 
 Ce qu'on veut c'est générer un shell script qui récupère les informations du
@@ -114,8 +114,8 @@ L'envoi est réalisé par l'utilitaire **mpack**. Le résultat final espéré po
 notre exemple est ce script :
 
 
-    :::shell
-    # 
+{{< highlight bash >}}
+    #
     STARTDATE="`date -d '2015-09-14 10:30:00-000' '+%a %e %b %R'`"
     SUMMARY="Déjeuner avec M."
     echo "BEGIN:VCALENDAR" >event.ics
@@ -158,7 +158,7 @@ notre exemple est ce script :
     echo "END:VEVENT" >> event.ics
     echo "END:VCALENDAR" >>event.ics
     mpack -s "$SUMMARY - $STARTDATE" event.ics $1
-
+{{< /highlight >}}
 
 Comment fait-on ? On exécute la requête SQL et on la donne à manger à un
 script **awk** qui a pour objectif de générer le shell script ci-dessus. Awk a
@@ -169,20 +169,20 @@ entrée (comment distinguer les enregistrements) et de faire correspondre des
 traitements à certains enregistrements qu'on identifie par une expression
 régulière.
 
-Voci le script awk complet : 
+Voci le script awk complet :
 
-    :::awk
-    BEGIN { 
+{{< highlight awk >}}
+    BEGIN {
         FS="\n"    
         OFS=""
         ORS="\n"
         print "#!/bin/sh"
-        print " " 
+        print " "
     }
     # blank lines
     /^$/ { next }
     # record header
-    $1 ~ /^\*\*\*\*/ { 
+    $1 ~ /^\*\*\*\*/ {
         next
     }
     # summary field
@@ -214,6 +214,7 @@ Voci le script awk complet :
     {            
         print "echo \"" $0 "\" >> event.ics"
     }
+{{< /highlight >}}
 
 Il ne reste plus qu'à orchestrer tout cela dans un shell script et de
 l'appeler par une tâche **cron**. Le script complet gère les rappels du jour

@@ -24,7 +24,7 @@ Python dans un *virtualenv* de préférence, avec le gestionnaire de paquets
 
 Voici un exemple d'envoi d'e-mail en Python :
 
-    :::python
+{{< highlight python >}}
     import requests
     headers = {'Content-Type': 'application/json; charset=utf-8'}
     msg = {
@@ -37,14 +37,16 @@ Voici un exemple d'envoi d'e-mail en Python :
         logger.debug('Email for %s posted' % to_email)
     else:
         logger.warn('Cannot post email for %s' % to_email)
+{{< /highlight >}}
 
 Et voici le même exemple en ligne de commande avec CURL :
 
-    :::shell
+{{< highlight bash >}}
     curl -X POST -H "Content-Type: application/json; charset=utf-8"
-         -d '{"to":"bill@phoenix.com", "subject":"Got it", 
+         -d '{"to":"bill@phoenix.com", "subject":"Got it",
               "content":"See you soon!\n\n-- John"}'
          http://localhost:8000/mbox
+{{< /highlight >}}
 
 Plutôt que de faire du *polling* pour voir si de nouveaux messages sont
 arrivés, on peut définir la fréquence de polling au niveau de SRmail ainsi que
@@ -55,4 +57,3 @@ Pour le déploiement de mes applications Python j'utilise [Supervisor](/supervis
 permet de s'abstraire du système d'init (SysV,  OpenRC, systemd).
 
 Voilà c'est sans prétention un outil qui peut vous être utile.
-

@@ -68,7 +68,7 @@ port 80 alors qu'on l'attaque sur le port 8080. Un moyen de contourner ce
 problème si l'application n'est pas configurable, consiste à installer un NginX
 sur la machine hôte pour faire office de proxy.
 
-    :::nginx
+{{< highlight nginx >}}
     # Proxy
 
     upstream vbox-vm {
@@ -95,6 +95,7 @@ sur la machine hôte pour faire office de proxy.
         }
 
     }
+{{< /highlight >}}
 
 Ainsi, on peut attaquer le port HTTP de la machine locale et avoir ses requêtes
 redirigées vers le port HTTP de la VM. On n'a plus de changement de port donc
@@ -102,4 +103,3 @@ les liens sont valides.
 
 Ces deux astuces me permettent de travailler avec mes VMs sur mon laptop de
 développement en mode déconnecté.  Si vous en avez d'autres je suis preneur :-)
-

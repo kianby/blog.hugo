@@ -6,6 +6,8 @@ theme = "hugo-pure-yax"
 preserveTaxonomyNames = false
 paginate = 10
 enableRobotsTXT = true
+pygmentsuseclasses = false
+pygmentsstyle = "manni"
 
 [permalinks]
   post = "/:year/:slug/"

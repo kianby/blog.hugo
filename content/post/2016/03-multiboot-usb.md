@@ -17,7 +17,7 @@ soi-même sa clef avec **GRUB** au lieu de **syslinux**. Cela veut dire qu'on ne
 peut démarrer que des GNU/Linux et pas des utilitaires DOS (comme il y en a
 quantité pour tester les disques ou la mémoire), c'est parfait, c'est la seule
 chose que je fais. Cette documentation ArchLinux [est accessible à cette
-adresse](https://wiki.archlinux.org/index.php/Multiboot_USB_drive). 
+adresse](https://wiki.archlinux.org/index.php/Multiboot_USB_drive).
 
 Cet article est donc surtout un mémo pour moi même qui reprend les parties de
 cette doc pertinentes pour mon cas d'usage  J'ai besoin d'avoir le live CD de
@@ -32,7 +32,6 @@ CentOS pèse 4 Go donc on formate en EXT.
 
 Voici ma table de partition :
 
-    :::shell
     $ fdisk -l /dev/sdf
 
     Disque /dev/sdf : 14,5 GiB, 15504900096 octets, 30283008 secteurs
@@ -45,22 +44,20 @@ Voici ma table de partition :
     Device     Start      End  Sectors  Size Type
     /dev/sdf1   2048 30282974 30280927 14,4G Linux filesystem
 
-Ensuite, on crée un répertoire pour accueillir GRUB et les ISO : 
+Ensuite, on crée un répertoire pour accueillir GRUB et les ISO :
 
-    :::shell
     $ mount /dev/sdf1 /mnt
     $ mkdir -p /mnt/boot/iso
 
-Et on installe GRUB : 
+Et on installe GRUB :
 
-    :::shell
     grub-install --force  --target=i386-pc --recheck --boot-directory=/mnt/boot /dev/sdf
 
 Il reste à copier les ISO dans le répertoire */mnt/boot/iso* et à créer un
 fichier *mnt/boot/grub/grub.cfg*. Tout le problème est de configurer correctement
 GRUB pour monter chaque type de distribution. Pour certaines, il n'y a pas de
 solution pour que ça fonctionne. Le documentation ArchLinux liste la
-configuration GRUB pour un certain nombre de distributions. 
+configuration GRUB pour un certain nombre de distributions.
 
 Voici ma configuration **/mnt/boot/grub/grub.cfg** pour les distributions installées sur ma clef :
 
@@ -114,6 +111,4 @@ Pour trouver l'identifiant UUID de la clef qu'on claque dans la variable
 CentOS ou l'identifiant de la partition *fs-uuid* qu'on passe à la commande search,
 on utilise la commande **blkid** :
 
-    :::shell
     blkid /dev/sdf1: UUID="53ac1278-3d48-4528-a348-2eb3b7b8dc93" TYPE="ext2" PARTUUID="40c8461c-a5fd-4b3b-9a78-f8e92275ea98"
-

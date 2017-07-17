@@ -97,7 +97,7 @@ déroulée.
 
 Voici donc les grandes lignes de la partie **récupération des données** :
 
-    :::shell
+{{< highlight bash >}}
     # Les fichiers de configuration de NginX
     cp -r /etc/nginx/* $TARGET_DIR/nginx/.
 
@@ -115,6 +115,7 @@ Voici donc les grandes lignes de la partie **récupération des données** :
          --http-user=$OC_USER --http-password=$OC_PWD \
          -O $TARGET_DIR/owncloud/cal.ics \
          "https://owncloud.madyanne.fr/index.php/apps/calendar/export.php?calid=1"
+{{< /highlight >}}
 
 Suite à cela, le script crée une belle archive et la copie dans un répertoire
 *backup* de mes fichiers Owncloud. Ce n'est pas suffisant pour qu'elle soit
@@ -122,9 +123,10 @@ synchronisée par Owncloud car on l'a copié en douce. Il faut forcer Owncloud �
 rescanner son répertoire avec la commande suivante exécutée en tant
 qu'utilisateur *www-data*:
 
-    :::shell
+{{< highlight bash >}}
     su -c "/usr/bin/php /var/www/owncloud/console.php files:scan all" \
         -s /bin/sh www-data
+{{< /highlight >}}
 
 Il reste encore un peu de peaufinage mais ça semble faire le boulôt et je vois la
 fin du tunnel de cette migration de serveur.

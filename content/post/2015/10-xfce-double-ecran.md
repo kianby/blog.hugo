@@ -22,8 +22,8 @@ Voici une capture d'écran de arandr :
 Et un exemple de script généré pour une configuration en double écran avec le
 moniteur externe à droite de l'écran LCD du portable :
 
-    :::shell
-    xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --mode 1920x1080 --pos 1366x0 --rotate normal
+    xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal
+          --output DP1 --off --output VGA1 --mode 1920x1080 --pos 1366x0 --rotate normal
 
 En utilisant arand je vais facilement générer les deux scripts dont j'ai besoin :
 
@@ -38,19 +38,22 @@ le moniteur externe est connecté et applique la bonne commande xrandr. Pour
 cela, on édite le fichier de configuration **/etc/lightdm/lightdm.conf** et on
 ajoute la directive *display-setup-script* dans la section SeatDefaults :
 
-    :::ini
     [SeatDefaults]
     ...
     display-setup-script=/usr/local/bin/lightdm-monitor.sh
 
 et voici le script **lightdm-monitor.sh** :
 
-    :::shell
+{{< highlight bash >}}
     if (xrandr | grep "VGA1 disconnected"); then
-        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --off
+        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 \
+               --rotate normal --output DP1 --off --output VGA1 --off
     else    
-        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --mode 1920x1080 --pos 1366x0 --rotate normal
+        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 \
+                --rotate normal --output DP1 --off --output VGA1 \
+                --mode 1920x1080 --pos 1366x0 --rotate normal
     fi
+{{< /highlight >}}
 
 Le réglage est valable pour lightdm mais quand on ouvre une session XFCE, il
 est perdu et on revient à la configuration par défaut à savoir l'affichage
@@ -64,16 +67,19 @@ programme en ligne de commande de configurationde XFCE) adéquate.
 
 Finalement, cela donne le script **xfce-monitor.sh** au démarrage de la session:
 
-    :::shell
+{{< highlight bash >}}
     sleep 3
     if (xrandr | grep "VGA1 disconnected"); then
-        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --off
+        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 \
+               --rotate normal --output DP1 --off --output VGA1 --off
         xfconf-query -c xfce4-panel -p /panels/panel-1/output-name -s LVDS1
     else    
-        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 --rotate normal --output DP1 --off --output VGA1 --mode 1920x1080 --pos 1366x0 --rotate normal
+        xrandr --output HDMI1 --off --output LVDS1 --mode 1366x768 --pos 0x0 \
+               --rotate normal --output DP1 --off --output VGA1 \
+              --mode 1920x1080 --pos 1366x0 --rotate normal
         xfconf-query -c xfce4-panel -p /panels/panel-1/output-name -s VGA1
     fi
-
+{{< /highlight >}}
 
 Le *sleep* en début de script n'est pas élégant. Sans lui, l'exécution du
 script intervient avant que la session XFCE soit initialisée et les commandes

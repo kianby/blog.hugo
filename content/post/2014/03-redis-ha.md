@@ -158,11 +158,11 @@ nouveau s'adresser aux sentinelles pour récupérer l'adresse du Redis maître.
 
 Voici un exemple typique de code en Python :
 
-    :::python
+{{< highlight python >}}
     from redis.sentinel import Sentinel
     sentinel = Sentinel(
         [('192.168.0.51', 26379), ('192.168.0.52', 6379)], socket_timeout=0.1)
     print("Master %s %d" % sentinel.discover_master('master'))
-
+{{< /highlight >}}
 
 Je suis le projet Redis depuis un bout de temps avec intérêt car il offre beaucoup d'applications possibles dans des architectures distribuées multi-langages.
