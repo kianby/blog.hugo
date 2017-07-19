@@ -8,10 +8,10 @@
     <p><i class="fa fa-envelope"></i>{{ $.Site.Author.email }}</p>
     {{ end }}
     {{- if .Site.Params.widgets.feed1_label }}
-    <p><a href="{{ .Site.Params.widgets.feed1_url }}" rel="alternate"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed1_label }}</a></p>
+    <p><a href="{{ .Site.Params.widgets.feed1_url }}" type="application/rss+xml"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed1_label }}</a></p>
     {{ end }}
     {{- if .Site.Params.widgets.feed2_label }}
-    <p><a href="{{ .Site.Params.widgets.feed2_url }}" rel="alternate"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed2_label }}</a></p>
+    <p><a href="{{ .Site.Params.widgets.feed2_url }}" type="application/rss+xml"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed2_label }}</a></p>
     {{ end }}
     <!-- recent articles -->
     {{- if .Site.Params.widgets.recent_articles }}

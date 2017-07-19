@@ -34,7 +34,8 @@
   <meta name="msapplication-TileColor" content="#2d89ef">
   <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
-  <link href="{{ .Site.BaseURL }}/index.xml" type="application/atom+xml" rel="alternate" title="{{ .Site.Title }} ATOM Feed" />
+  <link href="{{ .Site.BaseURL }}/index.xml" type="application/rss+xml" rel="feed" title="{{ .Site.Title }} Feed" />
+  <link href="{{ .Site.BaseURL }}/index.xml" type="application/rss+xml" rel="alternate" title="{{ .Site.Title }} Feed" />
 
   <script src="{{ .Site.BaseURL }}/js/markdown.min.js"></script>
   <script src="{{ .Site.BaseURL }}/js/mustache.min.js"></script>
