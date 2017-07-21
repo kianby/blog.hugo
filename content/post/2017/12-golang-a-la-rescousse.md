@@ -20,6 +20,10 @@ J'ai terminé sur une performance bien améliorée :
 - une répartition du temps de traitement entre 81 ms et 18 secondes (assez élevé)
 - 171 requêtes avec un temps de traitement > 10 secondes
 
+L'architecture ressemble à cela :
+
+![Architecture Stacosys cache](/images/2017/diag-sanic-cache.png)
+
 Le mieux n'étant pas toujours l'ennemi du bien, j'ai effectué un test HTTP hors
 contexte de Golang qui m'a convaincu que je pourrais m'en servir.
 [Golang](https://golang.org) a la particularité d'être un langage compilé, typé,
@@ -42,6 +46,13 @@ du développement généraliste où la performance compte.
 
 On arrive à des performances similaires en nombre de requêtes traitées mais avec
 un temps de réponse divisé par 4. La démonstration ne tend à
+
+
+Voici l'architecture finale :
+
+![Architecture Golang HTTP/Cache](/images/2017/diag-go-cache.png)
+
+Et pour finir un aperçu du code :
 
 {{< highlight go "linenos=inline" >}}
     package main
