@@ -1,5 +1,6 @@
 +++
 title = "Performances, Golang à la rescousse"
+slug = "performances-golang-a-la-rescousse"
 date = "2017-07-24"
 categories = ["Développement", "Blog"]
 tags = ["planet"]
