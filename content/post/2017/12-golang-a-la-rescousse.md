@@ -3,7 +3,6 @@ title = "Performances, Golang à la rescousse"
 date = "2017-07-24"
 categories = ["Développement", "Blog"]
 tags = ["planet"]
-draft = true
 +++
 
 Dans l'[article précédent](/2017/performance-python-web) j'ai optimisé le
@@ -51,10 +50,10 @@ un langage orienté objet. En tout cas, il propose un paradigme de programmation
 simple et une richesse de librairies qui le rendent très intéressant pour du
 développement généraliste où la performance compte.
 
-J'ai donc remis Stacosys en situation initiale (retour au serveur HTTP de Flask)
-et j'ai développé un serveur HTTP avec cache en Golang qui sert de proxy pour
-récupérer le compteur de commentaires. Les autres appels à l'API de Stacosys
-sont envoyés directement à Stacosys.
+J'ai donc restauré Stacosys en situation initiale (retour au serveur HTTP de Flask)
+et j'ai ajouté un serveur HTTP avec cache en Golang qui sert de proxy à NginX pour
+récupérer le compteur de commentaires. Les autres appels à l'API de Stacosys sont 
+envoyés directement à Stacosys.
 
 L'architecture devient ainsi :
 
@@ -167,10 +166,10 @@ Python est trop lent !
 Hier, je lisais un article à propos de [Discord](https://discordapp.com/), une
 application concurrente de Teamspeak avec de la VoIP, des gros besoins de
 concurrence de traitement (5 millions de messages échangés en permanence), du
-Web et de l'application mobile. Leur produit mixe 4 langages différents :
-Python, NodeJS, Golang et Elixir (Erlang). Chacun a son rôle et son champ
+Web et de l'application mobile. Leur solution mixe 4 langages différents :
+Python, NodeJS, Golang et Elixir (Erlang) ; chacun a son rôle et son champ
 d'application dédié. Plus on acquiert une culture large de l'informatique et
-plus on sera capable de choisir le bon outil (langage, paradigme de
-programmation, framework) en fonction de la tâche à accomplir, ce qui rejoint ce
-dicton anglo-saxon que j'aime beaucoup même s'il est un peu galvaudé : *if all
+plus on sera capable de choisir le bon langage / paradigme de
+programmation / framework en fonction de la tâche à accomplir, ce qui rejoint ce
+dicton anglo-saxon que j'aime bien même s'il est un peu galvaudé : *if all
 you have is a hammer, everything looks like a nail*.
