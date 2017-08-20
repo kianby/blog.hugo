@@ -99,7 +99,9 @@ function new_comment() {
   var subscribe = document.getElementById('subscribe').checked;
   var message = document.getElementById('message').value;
 
-  stacosys_new_comment(STACOSYS_PAGE, author, email, site, captcha, subscribe, message, submit_success, submit_failure);
+  if( author && message) {
+    stacosys_new_comment(STACOSYS_PAGE, author, email, site, captcha, subscribe, message, submit_success, submit_failure);
+  }
 }
 
 function submit_success(context, data) {

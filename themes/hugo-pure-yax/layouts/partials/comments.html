@@ -8,6 +8,7 @@
             <input class="pure-u-1-2" id="author" name="author" type="text" placeholder="Nom ou Surnom *" required>
             <input class="pure-u-1-2" id="email" name="email" type="email" placeholder="Adresse email (non publié)">
             <input class="pure-u-1-2" id="site" name="site" type="text" placeholder="Site Web">
+            <input class="pure-u-1-2 hidden" id="captcha" name="captcha" type="text" placeholder="Etes vous humain ?">
         </fieldset>
         <fieldset class="pure-group">
             <textarea id="message" class="pure-u-1-2" name="message" rows="4" placeholder="Votre commentaire * (texte simple ou Markdown)" required></textarea>
@@ -22,10 +23,6 @@
                 type="checkbox">&nbsp;S'abonner aux commentaires de cet article (adresse email nécessaire)
             </label>
             <p><em>(Les champs obligatoires sont notés avec une *)</em></p>
-            <div id="onestpotes" style="display:none">
-                <input id="captcha" name="captcha" type="text" placeholder="Ne pas remplir si vous êtes humain">
-                <!-- <input name="article" id="article" type="hidden" value="article.cacause_article"> -->
-            </div>
         </fieldset>
         <button onclick="preview_markdown(); return false" class="button-warning pure-button">Prévisualiser</button>
         <button type="button" onclick="new_comment(); return false;" class="button-success pure-button">Envoyer</button>
