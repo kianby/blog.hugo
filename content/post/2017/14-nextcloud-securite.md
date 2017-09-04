@@ -4,7 +4,6 @@ slug= "nextcloud-securite"
 date = "2017-09-04"
 categories = ["Hébergement", "BSD"]
 tags = ["planet"]
-draft = true
 +++
 
 En 2007, j'ai ouvert un compte Dropbox avec l'offre gratuite de 2 Go. J'avais
