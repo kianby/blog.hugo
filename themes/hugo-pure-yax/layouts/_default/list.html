@@ -49,20 +49,5 @@
     </div>
 </div>
 
-{{- if .Site.Params.widgets.stacosys_comments }}
-<script type="text/javascript"><!--
-
-var STACOSYS_URL = {{ .Site.Params.widgets.stacosys_url }};
-var STACOSYS_HTTP_URL = {{ .Site.Params.widgets.stacosys_http_url }};
-var STACOSYS_TOKEN = {{ .Site.Params.widgets.stacosys_token }};
-
-var counters = document.getElementsByClassName("comments-counter");
-for(var i = 0; i < counters.length; i++)
-{
-  get_comments_count(counters[i].innerText, counters[i]);
-}
---></script>
-{{- end }}
-
 </body>
 </html>

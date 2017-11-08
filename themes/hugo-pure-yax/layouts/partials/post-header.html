@@ -7,13 +7,19 @@
             {{- range .Params.categories }}, <a class="post-category post-category-{{ . }}" href="{{ $baseUrl }}/categories/{{ . | urlize }}">{{ . }}</a>{{ end }}
         {{ end }}
         {{- if isset .Params "author" }}
-        {{ .Site.Params.writtenby }}
-        {{ with .Params.author }}
-             <strong class="post-author">{{ . }}</strong>
+          {{ .Site.Params.writtenby }}
+          {{ with .Params.author }}
+               <strong class="post-author">{{ . }}</strong>
+          {{ end }}
         {{ end }}
-        {{ end }}
-        {{- if .Site.Params.widgets.stacosys_comments }}
-        <span class="comments-counter" style="display:none">{{ .RelPermalink }}</span>
+        {{ if .Site.Params.widgets.stacosys_comments }}
+          {{ $restParam := (printf "/comments/count?token=%v&url=%v" .Site.Params.widgets.stacosys_token .URL) }}
+          {{ $countResp := getJSON .Site.Params.widgets.stacosys_url $restParam }}
+          {{ if eq $countResp.count  1 }}
+          <span><i class="fa fa-comment fa-md"></i> {{ $countResp.count }} commentaire</span>
+          {{ else if gt $countResp.count 1 }}
+          <span><i class="fa fa-comment fa-md"></i> {{ $countResp.count }} commentaires</span>
+          {{ end }}
         {{ end }}
     </p>
 </header>
