@@ -91,7 +91,7 @@ function loading_failure(error) {
 //  Submit a new comment
 // --------------------------------------------------------------------------
 
-function new_comment() {
+function new_comment(article_url) {
   var author = document.getElementById('author').value;
   var email = document.getElementById('email').value;
   var site = document.getElementById('site').value;
@@ -100,7 +100,7 @@ function new_comment() {
   var message = document.getElementById('message').value;
 
   if( author && message) {
-    stacosys_new_comment(STACOSYS_PAGE, author, email, site, captcha, subscribe, message, submit_success, submit_failure);
+    stacosys_new_comment(article_url, author, email, site, captcha, subscribe, message, submit_success, submit_failure);
   }
 }
 

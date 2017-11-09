@@ -58,7 +58,7 @@ function stacosys_load_comments(article_url, callback, errback) {
 }
 
 function stacosys_new_comment(article_url, author, email, site, captcha, subscribe, message, callback, errback) {
-  var api_url = STACOSYS_URL + '/comments';
+  var api_url = {{ .Site.Params.widgets.stacosys_post }};
   var data = {
     'token': STACOSYS_TOKEN,
     'url': article_url,

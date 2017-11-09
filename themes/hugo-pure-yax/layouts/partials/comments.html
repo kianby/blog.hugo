@@ -25,53 +25,29 @@
             <p><em>(Les champs obligatoires sont notés avec une *)</em></p>
         </fieldset>
         <button onclick="preview_markdown(); return false" class="button-warning pure-button">Prévisualiser</button>
-        <button type="button" onclick="new_comment(); return false;" class="button-success pure-button">Envoyer</button>
+        <button type="button" onclick="new_comment(window.location.pathname); return false;" class="button-success pure-button">Envoyer</button>
     </form>
 </div>
 
-<!-- ====================================================== -->
-<!--  Begin section : display comments                      -->
-<!-- ====================================================== -->
+<div id="stacosys-comments">
+  {{ $restParam := (printf "/comments?token=%v&url=%v" .Site.Params.widgets.stacosys_token .URL) }}
+  {{ $resp := getJSON .Site.Params.widgets.stacosys_url $restParam }}
+  {{ range $resp.data }}
 
-<p></p>
-<div id="show-comments-button" style="display:none">
-  <a id="show-comment-label" class="button-success pure-button"
-     href="javascript:show_comments();">Voir le commentaire</a>
-</div>
-
-<!-- stacosys comments container -->
-<div id="stacosys-comments" style="display:none">Chargement...</div>
-
-<!-- stacosys comments template -->
-<script id="stacosys-template" type="x-tmpl-mustache">
-[[#data]]
-<hr>
-<div class="inline">
-[[#site]]
-    <a href="[[site]]">
-[[/site]]
-    <img src="http://www.gravatar.com/avatar/[[avatar]].jpg" style="float:left; margin-right:10px" height="32" width="32">
-[[#site]]
-    </a>
-[[/site]]
-    <span class="title">[[author]]</span>
-    <span> - [[date]]</span>
-</div>
-[[{mdcontent}]]
-[[/data]]
-</script>
-
-<!-- ====================================================== -->
-<!--  End section : display comments                        -->
-<!-- ====================================================== -->
-
-<script type="text/javascript"><!--
-
-var STACOSYS_URL = {{ .Site.Params.widgets.stacosys_url }};
-var STACOSYS_HTTP_URL = {{ .Site.Params.widgets.stacosys_http_url }};
-var STACOSYS_TOKEN = {{ .Site.Params.widgets.stacosys_token }};
-var STACOSYS_PAGE = window.location.pathname;
-
-window.onload = initialize_comments();
-
---></script>
+  <hr>
+  <div class="inline">
+    {{ if isset . "site" }}
+      <a href="{{ .site }}">
+    {{ end }}
+    <img src="http://www.gravatar.com/avatar/{{ .avatar }}.jpg" style="float:left; margin-right:10px" height="32" width="32">
+    {{ if isset . "site" }}
+      </a>
+    {{ end }}
+      <span class="title">{{ .author }}</span>
+      <span> - {{ .date }}</span>
+  </div>
+  <p>
+  {{ .content | markdownify }}
+  </p>
+  {{ end }}
+</div> 
