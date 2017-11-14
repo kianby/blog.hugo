@@ -6,10 +6,6 @@ slug= "mentions-legales"
 nocomment = ""
 +++
 
-**La seule contrepartie à l'utilisation de ces mentions légales, est l'engagement total à laisser le lien crédit subdelirium sur cette page de mentions légales.**
-
-Vos mentions légales :
-
 ## Informations légales
 
 ### 1. Présentation du site.
