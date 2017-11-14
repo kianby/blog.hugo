@@ -1,7 +1,9 @@
 +++
 title = "Redirection"
-date = "2009-06-01"
+date = "2000-01-01"
+slug = "redirect"
 nocomment = ""
+nodate = ""
 +++
 
 **Le commentaire a été envoyé à l'administrateur du site.**

@@ -1,9 +1,9 @@
-
 +++
 title = "Mentions Légales"
-date = "2009-06-01"
+date = "2000-01-01"
 slug= "mentions-legales"
 nocomment = ""
+nodate = ""
 +++
 
 ### 1. Présentation du site.

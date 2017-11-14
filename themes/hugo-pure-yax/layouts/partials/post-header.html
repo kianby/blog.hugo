@@ -1,7 +1,9 @@
 <header class="post-header">
     <p class="post-meta">
+        {{- if not (isset .Params "nodate") }}
         <i class="fa fa-info-circle fa-md"></i>
         {{ .Date.Format "02/01/2006" }}
+        {{ end }}
         {{- if isset .Params "categories" }}
             {{- $baseUrl := .Site.BaseURL }}
             {{- range .Params.categories }}, <a class="post-category post-category-{{ . }}" href="{{ $baseUrl }}/categories/{{ . | urlize }}">{{ . }}</a>{{ end }}
