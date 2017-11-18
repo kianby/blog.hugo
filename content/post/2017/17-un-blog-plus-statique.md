@@ -1,7 +1,7 @@
 +++
 title = "Un blog plus statique"
 date = "2017-11-17"
-categories = ["Hébergement"]
+categories = ["Hébergement", "Blog"]
 tags = ["planet"]
 +++
 
