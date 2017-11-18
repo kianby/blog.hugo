@@ -9,10 +9,7 @@ nodate = ""
 **Le commentaire a été envoyé à l'administrateur du site.**
 
 Si vous avez fourni une adresse e-mail, vous recevrez un
-e-mail de confirmation à la publication du commentaire. Si
-vous avez souhaité être abonné aux commentaires de l'article
-vous recevrez les futurs commentaires de cet article par
-e-mail également.
+e-mail de confirmation à la publication du commentaire. 
 
 Votre e-mail ne servira **JAMAIS** à autre chose.
 
