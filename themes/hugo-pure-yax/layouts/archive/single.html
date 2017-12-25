@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{ partial "header.html" . }}
+<body>
+
+  <div class="pure-g">
+    {{ partial "banner.html" . }}
+  </div>
+  <p></p>
+
+  <div class="pure-g">
+    <div class="pure-u-lg-2-3 pure-u-1">
+        <div class="l-box">
+          <article role="article">
+            <header>
+              <h1 class="entry-title">
+                {{ .Title }}  <!-- title, in this case it will be "blog index" -->
+              </h1>
+            </header>
+            <div id="blog-archives" class="category">
+              {{ .Content }}
+              {{ range (where .Site.Pages "Type" "post") }}
+                {{ if ne .Title "Posts" }}
+                <article>
+                  <span class="month">{{ .Date | dateFormat "02/01/2006" }}</span>
+                    <a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a>
+                </article>
+                {{ end }}
+              {{ end }}
+            </div>
+          </article>
+        </div>
+    </div>
+
+    <div class="pure-u-lg-1-3 pure-u-1" id="sidebar">
+        <div class="l-box">
+        {{ partial "sidebar.html" . }}
+        </div>
+    </div>
+  </div>
+
+  <div class="pure-g">
+      <div id="footer" class="pure-u-1 l-box">
+        {{ partial "footer.html" . }}
+      </div>
+  </div>
+
+</body>
+</html>

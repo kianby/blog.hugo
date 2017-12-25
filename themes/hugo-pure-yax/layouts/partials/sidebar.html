@@ -13,6 +13,8 @@
     {{- if .Site.Params.widgets.feed2_label }}
     <p><a href="{{ .Site.Params.widgets.feed2_url }}" type="application/rss+xml"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed2_label }}</a></p>
     {{ end }}
+    <!-- archives -->
+    <p><a href="/archive"><i class="fa fa-archive"></i>Les archives</a></p>
     <!-- recent articles -->
     {{- if .Site.Params.widgets.recent_articles }}
     <div>
