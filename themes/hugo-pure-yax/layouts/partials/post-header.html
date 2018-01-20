@@ -17,7 +17,7 @@
         {{ if .Site.Params.widgets.stacosys_comments }}
           {{ $restParam := (printf "/comments/count?token=%v&url=%v" .Site.Params.widgets.stacosys_token .URL) }}
           {{ $countResp := getJSON .Site.Params.widgets.stacosys_url $restParam }}
-          {{ if eq $countResp.count  1 }}
+          {{ if eq $countResp.count 1.0 }}
           <span><i class="fa fa-comment fa-md"></i> {{ $countResp.count }} commentaire</span>
           {{ else if gt $countResp.count 1 }}
           <span><i class="fa fa-comment fa-md"></i> {{ $countResp.count }} commentaires</span>
