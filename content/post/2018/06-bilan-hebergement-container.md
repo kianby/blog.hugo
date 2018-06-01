@@ -1,7 +1,7 @@
 +++
 title = "Hébergement et taille de containers"
 date = "2018-05-20"
-categories = ["Hébergement", "Virtualisation"]
+categories = ["Hébergement", "Containers"]
 tags = ["planet"]
 slug = "hebergement-containers" 
 +++
