@@ -1,4 +1,4 @@
-baseURL = "http://blogdutest.madyanne.fr/"
+baseURL = "http://127.0.0.1"
 languageCode = "fr-fr"
 defaultContentLanguage = "fr"
 title = "Le blog du Yax - TEST"
