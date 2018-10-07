@@ -1,6 +1,7 @@
 +++
 title = "Gadget Bridge et autres connectés"
 date = "2018-10-07"
+slug = "gadget-bridge-et-autres-connectes"
 categories = ["Matériel"]
 tags = ["planet"] 
 +++
