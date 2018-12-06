@@ -11,8 +11,14 @@
 
 body, .pure-g [class *= "pure-u"], .pure-g-r [class *= "pure-u"] {
     font-family: "open_sansregular";
-    background-color: #FBFBFB;
-    color: #333333;
+    color: rgb(58, 65, 69);
+    font-feature-settings: "liga";
+    font-kerning: auto;
+    font-language-override: normal;
+    font-optical-sizing: auto;
+    overflow-wrap: break-word;
+    text-rendering: optimizeLegibility;
+    /* font-size: 17px; */
 }
 
 h1, h2, h3 {
