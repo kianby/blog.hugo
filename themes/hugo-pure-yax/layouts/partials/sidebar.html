@@ -1,24 +1,24 @@
 <div class="well" id="sidebar">
-    <p class="title"><i class="fa fa-user fa-lg"></i>{{ $.Site.Author.name }}</p>
+    <!-- <p class="title"><i class="fas fa-user"></i>{{ $.Site.Author.name }}</p> -->
     <p>{{ $.Site.Author.bio }}</p>
     {{ if .Site.Author.picture }}
-    <p><img src="{{ $.Site.Author.picture }}" alt="{{ .Site.Author.name }}" />
+    <img src="{{ $.Site.Author.picture }}" alt="{{ .Site.Author.name }}" />
     {{ end }}
     {{ if .Site.Author.email }}
-    <p><i class="fa fa-envelope"></i>{{ $.Site.Author.email }}</p>
+    <p><i class="fas fa-envelope"></i>{{ $.Site.Author.email }}</p>
     {{ end }}
     {{- if .Site.Params.widgets.feed1_label }}
-    <p><a href="{{ .Site.Params.widgets.feed1_url }}" type="application/rss+xml"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed1_label }}</a></p>
+    <p><a href="{{ .Site.Params.widgets.feed1_url }}" type="application/rss+xml"><i class="fas fa-rss"></i>{{ .Site.Params.widgets.feed1_label }}</a></p>
     {{ end }}
     {{- if .Site.Params.widgets.feed2_label }}
-    <p><a href="{{ .Site.Params.widgets.feed2_url }}" type="application/rss+xml"><i class="fa fa-rss"></i>{{ .Site.Params.widgets.feed2_label }}</a></p>
+    <p><a href="{{ .Site.Params.widgets.feed2_url }}" type="application/rss+xml"><i class="fas fa-rss"></i>{{ .Site.Params.widgets.feed2_label }}</a></p>
     {{ end }}
     <!-- archives -->
-    <p><a href="/archive"><i class="fa fa-archive"></i>Les archives</a></p>
+    <p><a href="/archive"><i class="fas fa-archive"></i>Les archives</a></p>
     <!-- recent articles -->
     {{- if .Site.Params.widgets.recent_articles }}
     <div>
-    	<h4><i class="fa fa-book fa-lg"></i>{{ .Site.Params.widgets.recent_articles_label }}</h4>
+    	<h4><i class="fas fa-newspaper"></i>{{ .Site.Params.widgets.recent_articles_label }}</h4>
     	<div>
     		<ul class="sidebar">
     			{{- $recent_articles_num := (.Site.Params.widgets.recent_articles_num | default 3) }}

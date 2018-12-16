@@ -202,10 +202,7 @@ ul.sidebar {
   padding: 0;
 }
 li.sidebar {
-  list-style-type: none;
-}
-li.sidebar:before {
-  content: "\A4 \ ";
+  list-style-type: circle;
 }
 
 /* Pure CSS is default style for tables  */
