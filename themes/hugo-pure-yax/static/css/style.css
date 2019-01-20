@@ -18,11 +18,14 @@ body, .pure-g [class *= "pure-u"], .pure-g-r [class *= "pure-u"] {
     font-optical-sizing: auto;
     overflow-wrap: break-word;
     text-rendering: optimizeLegibility;
-    /* font-size: 17px; */
 }
 
-h1, h2, h3 {
-    font-size: 33.75px;
+h1 {
+    font-size: 2.2em; 
+}
+
+h2, h3 {
+    font-size: 2em;
 }
 
 a {
@@ -43,7 +46,7 @@ pre {
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 4px 4px 4px 4px;
     display: block;
-    font-size: 14px;
+    font-size: 0.9em;
     line-height: 21px;
     margin: 0 0 10.5px;
     padding: 10px;
@@ -75,6 +78,10 @@ pre {
 #banner p {
     display:inline;
     margin: 0 9px;
+}
+
+.post-description {
+    font-size: 1.1em;
 }
 
 .l-box {
