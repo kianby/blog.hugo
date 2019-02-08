@@ -1,6 +1,8 @@
 +++
 title = "Bilan hébergement 2018"
 date = "2019-02-07"
+slug = "bilan-hebergement-2018"
+aliases = ["/2019/bilan-hébergement-2018/"]
 categories = ["Hébergement"]
 tags = ["planet"] 
 +++
