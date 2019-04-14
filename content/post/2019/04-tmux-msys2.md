@@ -5,7 +5,7 @@ categories = ["GNU/Linux"]
 tags = ["planet"] 
 +++
 
-Toujours condamné aux logiciels de l'éditeur de Richmond dans le milieu professionnel, je suis un fidèle utilisateur de [MSYS2](https://www.msys2.org/), un Cygwin auquel on a greffé Pacman... pas le mentos jaune mais le gestionnaire de paquet de ArchLinux. Mais pourquoi faire un truc pareil me direz-vous ? Et bien pas seulement pour le plaisir de la ligne de commande ! L'interface d'installation et mise à jour des paquets Cygwin ressemble à ça : 
+Toujours condamné aux logiciels de l'éditeur de Redmond dans le milieu professionnel, je suis un fidèle utilisateur de [MSYS2](https://www.msys2.org/), un Cygwin auquel on a greffé Pacman... pas le mentos jaune mais le gestionnaire de paquet de ArchLinux. Mais pourquoi faire un truc pareil me direz-vous ? Et bien pas seulement pour le plaisir de la ligne de commande ! L'interface d'installation et mise à jour des paquets Cygwin ressemble à ça : 
 
 ![Sélection paquets Cygwin](/images/2019/cygwin-selectpackage.jpg)
 
